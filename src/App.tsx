@@ -22,7 +22,7 @@ useEffect(()=>{const fn=(e:KeyboardEvent)=>{if((e.ctrlKey||e.metaKey)&&e.key.toL
 const rows=data[page]||[],fields=schemas[page]||[],filtered=useMemo(()=>rows.filter(r=>Object.values(r).some(v=>String(v).toLowerCase().includes(search.toLowerCase()))),[rows,search])
 const orders=data['Ordens de Serviço']||[],urgent=orders.filter(r=>['Alta','Urgente'].includes(r.prioridade)&&!['Concluída','Cancelada'].includes(r.status)),low=(data.Material||[]).filter(r=>r.minimo!==''&&Number(r.quantidade)<=Number(r.minimo))
 const go=(p:Page)=>{setPage(p);setSearch('');setMenu(false);setModal('')}
-const create=()=>{setSelected(null);setForm(Object.fromEntries(fields.map(f=>[f.key,f.type==='date'?new Date().toISOString().slice(0,10):'']));setModal('form')}
+const create=()=>{setSelected(null);setForm(Object.fromEntries(fields.map(f=>[f.key,f.type==='date'?new Date().toISOString().slice(0,10):''])));setModal('form')}
 const edit=(r:Row)=>{setSelected(r);setForm({...r});setModal('form')}
 const save=(e:FormEvent)=>{e.preventDefault();const r:Row={...form,id:selected?.id||crypto.randomUUID(),createdAt:selected?.createdAt||new Date().toISOString()};setData(p=>({...p,[page]:selected?(p[page]||[]).map(x=>x.id===selected.id?r:x):[...(p[page]||[]),r]}));setModal('');setMessage(selected?'Registro atualizado.':'Registro cadastrado.')}
 const remove=(r:Row)=>{if(confirm('Confirma a exclusão deste registro?')){setData(p=>({...p,[page]:(p[page]||[]).filter(x=>x.id!==r.id)}));setMessage('Registro excluído.')}}
