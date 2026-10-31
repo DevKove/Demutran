@@ -1,7 +1,7 @@
 import { useEffect,useMemo,useState,type FormEvent } from 'react'
 import { Activity,AlertTriangle,ArrowRight,Bell,CalendarDays,CheckCircle2,ChevronDown,ClipboardCheck,ClipboardList,Download,Eye,LayoutDashboard,Menu,Package,Plus,Search,ShieldCheck,TrafficCone,Users,Wrench,X,Pencil,Trash2 } from 'lucide-react'
 type Page='Início'|'Material'|'Usuários'|'Vistorias'|'Ordens de Serviço'|'Escala'
-type Field={key:string;label:string;type?:string;required?:boolean;options?:string[]}
+type Field={key:string;label:string;type?:'text'|'number'|'date'|'select'|'textarea';required?:boolean;options?:string[]}
 type Row={id:string;createdAt:string;[key:string]:string}
 const pages:Page[]=['Início','Material','Usuários','Vistorias','Ordens de Serviço','Escala']
 const icons=[LayoutDashboard,Package,Users,ClipboardCheck,Wrench,CalendarDays]
