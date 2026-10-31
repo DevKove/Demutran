@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import {
-  Activity, AlertTriangle, ArrowDownToLine, ArrowRight, ArrowUpRight,
-  Bell, CalendarDays, CarFront, CheckCircle2, ChevronDown, ClipboardCheck,
-  ClipboardList, Clock3, Command, FileText, LayoutDashboard, LogOut,
-  Menu, Package, Plus, Search, Settings2, ShieldCheck, TrafficCone,
-  Truck, UserRound, Users, Wrench, X,
+  Activity, AlertTriangle, ArrowRight, ArrowUpRight, Bell, CalendarDays,
+  CarFront, CheckCircle2, ChevronDown, ClipboardCheck, ClipboardList,
+  Command, FileText, LayoutDashboard, Menu, Package, Plus, Search,
+  Settings2, ShieldCheck, TrafficCone, Users, Wrench, X,
 } from 'lucide-react'
-
 type ModuleKey = 'Início' | 'Material' | 'Usuários' | 'Vistorias' | 'Ordens de Serviço' | 'Escala'
 const navigation: { label: ModuleKey; icon: typeof LayoutDashboard }[] = [
   { label: 'Início', icon: LayoutDashboard },
