@@ -461,3 +461,166 @@ html[data-contrast="true"] .primary-button { color: #000; background: #ffdc35; }
   .metric-card, .panel, .settings-panel, .module-action,
   .records-table tbody tr { transition: none !important; }
 }
+
+
+/* Refinamento visual aplicado aos seletores reais da interface */
+:root {
+  --yellow: #f2c400;
+  --ink: #172334;
+  --muted: #526174;
+  --line: #d8e0e9;
+}
+html, body, #root { min-height:100%; }
+body {
+  color:#182638;
+  background:#e8edf3 !important;
+}
+.app-shell { background:#e8edf3; }
+.main-area {
+  background:
+    radial-gradient(ellipse at 90% 0%, rgba(242,196,0,.12), transparent 34rem),
+    linear-gradient(135deg,#e8edf4 0%,#f2f5f9 55%,#f7f6f1 100%) !important;
+}
+.page-content { background:transparent; }
+.topbar {
+  background:rgba(255,255,255,.97) !important;
+  border-bottom:1px solid #cbd5e1 !important;
+  box-shadow:0 4px 18px rgba(23,35,52,.07) !important;
+}
+.breadcrumb { color:#526174 !important; }
+.breadcrumb strong { color:#172334 !important; }
+.page-heading h1 { color:#172334 !important; }
+.page-heading p,.eyebrow { color:#526174 !important; }
+.heading-date {
+  color:#344256 !important;
+  background:#fff !important;
+  border-color:#cbd5e1 !important;
+  box-shadow:0 2px 8px rgba(23,35,52,.04);
+}
+.sidebar {
+  background:linear-gradient(180deg,#172638 0%,#101a28 100%) !important;
+  box-shadow:5px 0 24px rgba(16,26,40,.12);
+}
+.sidebar-label,.sidebar-version { color:#aab6c5 !important; }
+.nav-item { color:#d4dce6 !important; }
+.nav-item:hover { background:rgba(255,255,255,.12) !important;color:#fff !important; }
+.nav-item.active { background:#f2c400 !important;color:#172334 !important; }
+.brand small { color:#c0cad6 !important; }
+.profile-info strong { color:#172334 !important; }
+.profile-info small { color:#526174 !important; }
+.metric-card,.panel,.module-toolbar,.records-panel,.settings-panel,
+.module-action,.reports-filters,.reports-results,.record-modal {
+  background:#fff !important;
+  border:1px solid #d5dee8 !important;
+  box-shadow:0 5px 20px rgba(23,35,52,.065) !important;
+}
+.metric-card:hover,.panel:hover,.module-action:hover,.settings-panel:hover {
+  border-color:#c5a52c !important;
+  box-shadow:0 12px 28px rgba(23,35,52,.11) !important;
+}
+.metric-bottom span,.operation-row,.summary-stat { color:#344256 !important; }
+.metric-bottom small,.panel-heading p,.module-intro p,
+.records-heading p,.settings-title p,.reports-filter-heading p,
+.reports-results-heading p,.profile-info small { color:#526174 !important; }
+.panel-heading h3,.settings-title h2,.module-action-copy strong,
+.records-heading h2,.module-intro h2 { color:#172334 !important; }
+table th, th {
+  color:#344256 !important;
+  background:#edf1f6 !important;
+  border-bottom:1px solid #cbd5e1 !important;
+}
+table td, td { color:#344256 !important;border-bottom-color:#e1e7ef !important; }
+table td strong, td strong { color:#172334 !important; }
+table td small, td small { color:#526174 !important; }
+tbody tr:nth-child(even) { background:#f7f9fc; }
+tbody tr:hover { background:#fff8dc !important; }
+.form-grid input,.form-grid select,.form-grid textarea,
+.settings-form-grid input,.settings-form-grid select,.settings-form-grid textarea,
+.reports-filter-grid input,.reports-filter-grid select,.search-box {
+  color:#172334 !important;
+  background:#f8fafc !important;
+  border:1px solid #bdc9d7 !important;
+}
+.form-grid label,.settings-form-grid label,.reports-filter-grid label,
+.reports-filter-grid label span { color:#344256 !important; }
+.form-grid input::placeholder,.form-grid textarea::placeholder,
+.search-box input::placeholder { color:#667589 !important;opacity:1; }
+.form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus,
+.settings-form-grid input:focus,.settings-form-grid select:focus,
+.settings-form-grid textarea:focus,.reports-filter-grid input:focus,
+.reports-filter-grid select:focus {
+  outline:none !important;
+  border-color:#a78000 !important;
+  background:#fff !important;
+  box-shadow:0 0 0 3px rgba(242,196,0,.28) !important;
+}
+.secondary-button,.row-actions button,.toolbar-actions button {
+  color:#25364b !important;
+  background:#f4f7fa !important;
+  border:1px solid #c5d0dc !important;
+}
+.secondary-button:hover,.row-actions button:hover,.toolbar-actions button:hover {
+  color:#594500 !important;
+  background:#fff6cf !important;
+  border-color:#c4a02a !important;
+}
+.primary-button,.banner-button { background:#f2c400 !important;color:#172334 !important; }
+.text-action,.order-id { color:#765900 !important; }
+.status,.priority { font-weight:800 !important; }
+.detail-grid>div,.record-card,.record-field {
+  background:#f6f8fb !important;
+  border-color:#d5dee8 !important;
+}
+.detail-grid dt,.record-field span { color:#526174 !important; }
+.detail-grid dd,.record-field strong { color:#172334 !important; }
+.inline-notice { color:#594500 !important;background:#fff6cf !important;border-color:#ddc45e !important; }
+.empty-state p,.dashboard-empty { color:#526174 !important; }
+.footer { color:#526174 !important;border-top-color:#d5dee8 !important; }
+button:focus-visible,a:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible {
+  outline:3px solid #b58a00 !important;outline-offset:2px;
+}
+
+/* Alto contraste: reforça também componentes específicos do DEMUTRAN */
+html[data-contrast="true"] body,
+html[data-contrast="true"] .main-area,
+html[data-contrast="true"] .app-shell,
+html[data-contrast="true"] .page-content { background:#fff !important;color:#000 !important; }
+html[data-contrast="true"] .topbar,
+html[data-contrast="true"] .metric-card,
+html[data-contrast="true"] .panel,
+html[data-contrast="true"] .module-toolbar,
+html[data-contrast="true"] .records-panel,
+html[data-contrast="true"] .settings-panel,
+html[data-contrast="true"] .module-action,
+html[data-contrast="true"] .reports-filters,
+html[data-contrast="true"] .reports-results,
+html[data-contrast="true"] .record-modal {
+  background:#fff !important;color:#000 !important;border:2px solid #444 !important;box-shadow:none !important;
+}
+html[data-contrast="true"] .page-heading h1,
+html[data-contrast="true"] .panel-heading h3,
+html[data-contrast="true"] .settings-title h2,
+html[data-contrast="true"] .module-action-copy strong,
+html[data-contrast="true"] table td,
+html[data-contrast="true"] table td strong,
+html[data-contrast="true"] .detail-grid dd { color:#000 !important; }
+html[data-contrast="true"] .page-heading p,
+html[data-contrast="true"] .panel-heading p,
+html[data-contrast="true"] .settings-title p,
+html[data-contrast="true"] .module-intro p,
+html[data-contrast="true"] .detail-grid dt,
+html[data-contrast="true"] .empty-state p { color:#222 !important; }
+html[data-contrast="true"] table th { background:#111 !important;color:#fff !important; }
+html[data-contrast="true"] table td,
+html[data-contrast="true"] .form-grid input,
+html[data-contrast="true"] .form-grid select,
+html[data-contrast="true"] .form-grid textarea,
+html[data-contrast="true"] .settings-form-grid input,
+html[data-contrast="true"] .settings-form-grid select,
+html[data-contrast="true"] .settings-form-grid textarea {
+  background:#fff !important;color:#000 !important;border:2px solid #444 !important;
+}
+html[data-contrast="true"] .sidebar { background:#000 !important; }
+html[data-contrast="true"] .nav-item { color:#fff !important; }
+html[data-contrast="true"] .nav-item.active { background:#ffdc35 !important;color:#000 !important; }
