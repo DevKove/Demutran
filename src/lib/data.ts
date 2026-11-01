@@ -47,3 +47,4 @@ export function toDatabase(module: string, form: Record<string,string>) {
   }
   return Object.fromEntries((allowed[module] || []).map(key => [key, form[key] ?? null]))
 }
+
