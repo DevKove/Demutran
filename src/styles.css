@@ -219,3 +219,49 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Navegação horizontal no desktop; menu lateral retrátil preservado no mobile */
+@media (min-width: 851px) {
+  .sidebar { display: none; }
+  .main-area { margin-left: 0; }
+  .desktop-nav {
+    position: sticky;
+    top: 75px;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 66px;
+    padding: 10px clamp(20px, 3vw, 48px);
+    background: #191a1c;
+    border-bottom: 3px solid var(--yellow);
+    box-shadow: 0 5px 16px rgb(0 0 0 / 10%);
+  }
+  .desktop-nav-item {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 0 16px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: #c5c6ca;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: background .18s ease, color .18s ease, transform .18s ease;
+  }
+  .desktop-nav-item:hover { background: #ffffff12; color: #fff; transform: translateY(-1px); }
+  .desktop-nav-item.active { background: var(--yellow); color: #171717; box-shadow: 0 4px 12px #f5c40025; }
+  .desktop-nav-item .nav-count { margin-left: 1px; }
+  .desktop-nav-settings { margin-left: auto; border-color: #ffffff20; }
+}
+.desktop-nav { display: none; }
+@media (max-width: 850px) {
+  .desktop-nav { display: none !important; }
+  .sidebar { display: flex; }
+  .main-area { margin-left: 0; }
+}
