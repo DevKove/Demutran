@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type PointerEvent as ReactPointerEvent } from 'react'
 
 type SignaturePadProps = {
   value?: string
@@ -33,7 +33,7 @@ export default function SignaturePad({ value = '', onChange, label }: SignatureP
     }
   }, [value])
 
-  const point = (event: React.PointerEvent<HTMLCanvasElement>) => {
+  const point = (event: ReactPointerEvent<HTMLCanvasElement>) => {
     const rect = event.currentTarget.getBoundingClientRect()
     return { x: event.clientX - rect.left, y: event.clientY - rect.top }
   }
