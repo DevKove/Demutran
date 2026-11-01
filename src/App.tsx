@@ -1,4 +1,6 @@
 import { useEffect,useMemo,useState,type FormEvent } from 'react'
+import AuthGate from './components/AuthGate'
+import { supabase } from './lib/supabase'
 import { Activity,ArrowRight,Bell,CalendarDays,CheckCircle2,ClipboardCheck,ClipboardList,Contrast,Database,Download,Eye,LayoutDashboard,Menu,Package,Plus,Search,Settings,ShieldCheck,TrafficCone,Type,Users,Wrench,X,Pencil,Trash2,RotateCcw } from 'lucide-react'
 
 type Page='Início'|'Material'|'Usuários'|'Vistorias'|'Ordens de Serviço'|'Escala'|'Configurações'
@@ -20,7 +22,7 @@ const readPreferences=():Preferences=>{try{const value=JSON.parse(localStorage.g
 const formatDate=(value?:string)=>value?new Intl.DateTimeFormat('pt-BR').format(new Date(value+'T00:00:00')):'—'
 const today=()=>new Date().toISOString().slice(0,10)
 
-export default function App(){
+function AppContent(){
  const [page,setPage]=useState<Page>('Início'),[menu,setMenu]=useState(false),[search,setSearch]=useState(''),[data,setData]=useState<Record<string,Row[]>>(readData),[preferences,setPreferences]=useState<Preferences>(readPreferences),[modal,setModal]=useState<'form'|'view'|''>(''),[selected,setSelected]=useState<Row|null>(null),[form,setForm]=useState<Record<string,string>>({}),[message,setMessage]=useState(''),[notifications,setNotifications]=useState(false)
  useEffect(()=>{try{localStorage.setItem(DATA_KEY,JSON.stringify(data))}catch{setMessage('Não foi possível salvar: armazenamento local indisponível ou cheio.')}},[data])
  useEffect(()=>{try{localStorage.setItem(PREF_KEY,JSON.stringify(preferences));document.documentElement.dataset.fontSize=preferences.fontSize;document.documentElement.dataset.contrast=String(preferences.contrast)}catch{setMessage('Não foi possível salvar as preferências neste navegador.')}},[preferences])
@@ -51,3 +53,5 @@ export default function App(){
  {modal&&<div className="modal-backdrop" onMouseDown={event=>{if(event.target===event.currentTarget)setModal('')}}><section className="record-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div className="modal-heading"><div><h2 id="modal-title">{modal==='view'?'Detalhes do registro':selected?'Editar registro':'Novo cadastro'}</h2><p>{page} · Campos obrigatórios marcados com *</p></div><button className="icon-button" onClick={()=>setModal('')} aria-label="Fechar"><X/></button></div>{modal==='view'?<><dl className="detail-grid">{fields.map(field=><div key={field.key}><dt>{field.label}</dt><dd>{selected?.[field.key]||'—'}</dd></div>)}</dl><div className="modal-footer"><button className="secondary-button" onClick={()=>setModal('')}>Fechar</button><button className="primary-button" onClick={()=>selected&&startEdit(selected)}><Pencil size={16}/> Editar</button></div></>:<form onSubmit={save}><div className="form-grid">{fields.map(field=><label className={field.type==='textarea'?'field-wide':''} key={field.key}><span>{field.label}{field.required?' *':''}</span>{field.type==='select'?<select required={field.required} value={form[field.key]||''} onChange={event=>setForm(current=>({...current,[field.key]:event.target.value}))}><option value="">Selecione...</option>{field.options?.map(option=><option key={option} value={option}>{option}</option>)}</select>:field.type==='textarea'?<textarea rows={3} value={form[field.key]||''} onChange={event=>setForm(current=>({...current,[field.key]:event.target.value}))}/>:<input type={field.type||'text'} min={field.type==='number'?0:undefined} required={field.required} value={form[field.key]||''} onChange={event=>setForm(current=>({...current,[field.key]:event.target.value}))}/>}</label>)}</div><div className="modal-footer"><button type="button" className="secondary-button" onClick={()=>setModal('')}>Cancelar</button><button type="submit" className="primary-button"><CheckCircle2 size={17}/> Salvar registro</button></div></form>}</section></div>}
  </div>
 }
+
+export default function App(){return <AuthGate><AppContent/></AuthGate>}
