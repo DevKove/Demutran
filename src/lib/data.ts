@@ -25,7 +25,7 @@ const labelToStatus: Record<string,string> = {
 
 export function fromDatabase(module: string, raw: Record<string, unknown>): UiRow {
   const values = module === 'Veículos de Aluguel' ? { ...raw, data_inicio: raw.data_inicio || '', data_fim: raw.data_fim || '' }
-    : module === 'RST' ? { ...raw, data_ocorrencia: raw.data_ocorrencia ? (()=>{const d=new Date(String(raw.data_ocorrencia));d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,16)})() : '' }
+    : module === 'RST' ? { ...raw, numero: String(raw.numero ?? '').padStart(4,'0'), data_ocorrencia: raw.data_ocorrencia ? (()=>{const d=new Date(String(raw.data_ocorrencia));d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,16)})() : '' }
     : module === 'Usuários'
     ? {
         nome: raw.full_name, email: raw.email, telefone: raw.phone || '',
