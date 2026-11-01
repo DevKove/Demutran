@@ -285,3 +285,43 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 
 /* Área de assinatura manuscrita touch/mouse */
 .signature-pad{display:grid;gap:9px;width:100%;min-width:0}.signature-pad canvas{width:100%;min-height:150px;display:block;touch-action:none;-webkit-user-select:none;user-select:none}.signature-pad-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.signature-pad-footer small{font-size:12px;color:#6b7280}.signature-pad-footer button{min-height:38px}
+
+
+/* Identificação do usuário centralizada no cabeçalho */
+.topbar { position: sticky; }
+.topbar-user-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  max-width: 30%;
+  pointer-events: none;
+}
+.topbar-user-center img,
+.topbar-user-center [aria-label="Sem foto cadastrada"] {
+  width: 42px !important;
+  height: 42px !important;
+}
+.topbar-user-name { min-width: 0; text-align: left; }
+.topbar-user-name strong,
+.topbar-user-name small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.topbar-user-name strong { color: #24262b; font-size: 12px; font-weight: 800; }
+.topbar-user-name small { margin-top: 3px; color: #92959d; font-size: 10px; }
+@media (max-width: 850px) {
+  .topbar { padding-inline: 16px; }
+  .topbar-user-center { max-width: 34%; gap: 7px; }
+  .topbar-user-center img,
+  .topbar-user-center [aria-label="Sem foto cadastrada"] { width: 36px !important; height: 36px !important; }
+  .topbar-user-name strong { font-size: 11px; }
+  .topbar-user-name small { display: none; }
+}
+@media (max-width: 560px) {
+  .topbar-user-center { max-width: 38%; }
+  .topbar-user-name { display: none; }
+  .search-box { width: min(38vw, 150px); }
+  .search-box kbd { display: none; }
+}
