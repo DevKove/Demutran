@@ -19,7 +19,7 @@ const labelToStatus: Record<string,string> = {
   Pendente: 'pending', Ativo: 'active', Bloqueado: 'blocked',
 }
 
-export function fromDatabase(module: string, raw: Record<string, unknown>) {
+export function fromDatabase(module: string, raw: Record<string, unknown>): Record<string,string> {
   const values = module === 'Usuários'
     ? {
         nome: raw.full_name, email: raw.email, telefone: raw.phone || '',
@@ -28,7 +28,8 @@ export function fromDatabase(module: string, raw: Record<string, unknown>) {
         status: statusToLabel[String(raw.status)] || 'Pendente',
       }
     : raw
-  return { ...values, id: String(raw.id), createdAt: String(raw.created_at || '') }
+  const normalized = Object.fromEntries(Object.entries(values).map(([key,value]) => [key, value == null ? '' : String(value)]))
+  return { ...normalized, id: String(raw.id), createdAt: String(raw.created_at || '') }
 }
 
 export function toDatabase(module: string, form: Record<string,string>) {
