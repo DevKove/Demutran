@@ -3,7 +3,6 @@ export type UiRow = Record<string,string> & { id:string; createdAt:string }
 export const dbTables: Record<string,string> = {
   Material: 'materials',
   Usuários: 'profiles',
-  Vistorias: 'inspections',
   'Ordens de Serviço': 'service_orders',
   Escala: 'shifts',
   'Veículos de Aluguel': 'rental_vehicles',
