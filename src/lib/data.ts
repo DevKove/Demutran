@@ -58,7 +58,8 @@ export function toDatabase(module: string, form: Record<string,string>): Record<
     'testemunha1_nome','testemunha1_rg','testemunha1_endereco','testemunha1_telefone','testemunha2_nome','testemunha2_rg','testemunha2_endereco','testemunha2_telefone','versao_v1','versao_v2','danos_veiculo1','danos_veiculo2','assinatura_condutor1','assinatura_condutor2','comunicante1_nome','comunicante1_assinatura','comunicante1_cpf','comunicante2_nome','comunicante2_assinatura','comunicante2_cpf','servidor_nome','servidor_matricula','servidor_assinatura','data_registro'],
   }
   const payload=Object.fromEntries((allowed[module] || []).filter(key => form[key] !== '').map(key => [key, form[key]])) as Record<string,string>
-  if(module==='Sinistro'){for(const key of ['v1_data_nascimento','v1_validade_cnh','v2_data_nascimento','v2_validade_cnh','data_registro'])if(payload[key]==='')delete payload[key];}\n  if(module==='Sinistro'&&payload.data_ocorrencia)payload.data_ocorrencia=new Date(payload.data_ocorrencia).toISOString()
+  if(module==='Sinistro'){for(const key of ['v1_data_nascimento','v1_validade_cnh','v2_data_nascimento','v2_validade_cnh','data_registro'])if(payload[key]==='')delete payload[key];}
+  if(module==='Sinistro'&&payload.data_ocorrencia)payload.data_ocorrencia=new Date(payload.data_ocorrencia).toISOString()
   return payload
 }
 
