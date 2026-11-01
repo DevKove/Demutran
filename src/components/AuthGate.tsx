@@ -59,10 +59,11 @@ export default function AuthGate({children}:Props) {
     finally{setBusy(false)}
   }
 
+  const activateFirstAdmin=async()=>{setBusy(true);setError('');try{const {data,error}=await supabase.rpc('claim_first_admin');if(error)throw error;if(!data)throw new Error('O primeiro administrador já foi definido. Solicite liberação ao administrador atual.');const {data:current}=await supabase.auth.getSession();await loadProfile(current.session);setNotice('Primeiro administrador ativado com sucesso.')}catch(error){setError(error instanceof Error?error.message:'Não foi possível ativar o administrador.')}finally{setBusy(false)}}
   const signOut=async()=>{setBusy(true);await supabase.auth.signOut();setSession(null);setProfile(null);setBusy(false)}
   if(loading)return <div className="auth-loading">Validando acesso seguro...</div>
   if(session&&profile?.status==='active')return <>{children}</>
-  if(session)return <main className="auth-screen"><section className="auth-card"><div className="auth-logo"><TrafficCone size={28}/></div><h1>{profile?.status==='blocked'?'Acesso bloqueado':'Aguardando aprovação'}</h1><p>{profile?.status==='blocked'?'Esta conta está desativada. Contate o administrador.':'Seu cadastro foi recebido. Um administrador precisa aprovar seu acesso ao DEMUTRAN.'}</p><button className="auth-submit" onClick={signOut} disabled={busy}>Sair da conta</button></section></main>
+  if(session)return <main className="auth-screen"><section className="auth-card"><div className="auth-logo"><TrafficCone size={28}/></div><h1>{profile?.status==='blocked'?'Acesso bloqueado':'Aguardando aprovação'}</h1><p>{profile?.status==='blocked'?'Esta conta está desativada. Contate o administrador.':'Seu cadastro foi recebido. Um administrador precisa aprovar seu acesso ao DEMUTRAN.'}</p><button className="auth-submit" onClick={activateFirstAdmin} disabled={busy}>Ativar primeiro administrador</button><button className="auth-submit" onClick={signOut} disabled={busy}>Sair da conta</button></section></main>
 
   return <main className="auth-screen"><section className="auth-card">
     <div className="auth-brand"><div className="auth-logo"><TrafficCone size={28}/></div><div><strong>DEMU<span>TRAN</span></strong><small>GESTÃO MUNICIPAL DE TRÂNSITO</small></div></div>
