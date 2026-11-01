@@ -11,7 +11,7 @@ type Field={key:string;label:string;type?:'text'|'number'|'date'|'datetime-local
 type Row={id:string;createdAt:string;[key:string]:string}
 type Preferences={fontSize:'normal'|'large'|'xlarge';contrast:boolean}
 const pages:Page[]=['Início','Material','Usuários','Ordens de Serviço','Escala','Veículos de Aluguel','Sinistro']
-const icons=[LayoutDashboard,Package,Users,Wrench,CalendarDays,CarFront,FileWarning]
+const icons=[LayoutDashboard,Package,Users,ClipboardList,CalendarDays,CarFront,FileWarning]
 const emptyInstitutionalSettings:Record<string,string>={orgao:'Prefeitura Municipal',departamento:'Departamento Municipal de Trânsito',endereco:'',bairro:'',municipio:'',uf:'SP',cep:'',telefone:'',celular:'',email:'',site:'',responsavel:'',cargo_responsavel:'',documento_identificador:'',logo_url:'',cabecalho_documento:'',rodape_documento:''}
 const schemas:Record<string,Field[]>={
 Material:[{key:'nome',label:'Material',required:true},{key:'categoria',label:'Categoria',required:true},{key:'codigo',label:'Código / patrimônio'},{key:'quantidade',label:'Quantidade atual',type:'number',required:true},{key:'minimo',label:'Estoque mínimo',type:'number'},{key:'unidade',label:'Unidade',type:'select',options:['Unidade','Peça','Metro','Litro','Caixa','Kit']},{key:'local',label:'Local de armazenamento'},{key:'obs',label:'Observações',type:'textarea'}],
