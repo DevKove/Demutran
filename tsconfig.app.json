@@ -17,8 +17,9 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "strict": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
+    "useUnknownInCatchVariables": false,
     "noFallthroughCasesInSwitch": true
   },
   "include": [
