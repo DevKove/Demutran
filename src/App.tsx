@@ -90,7 +90,7 @@ Sinistro:[
 {key:'assinatura_condutor2',label:'Assinatura do condutor 2',type:'signature',section:'ASSINATURAS'},
 {key:'servidor_matricula',label:'Matrícula do servidor',type:'server-select',required:true,section:'IDENTIFICAÇÃO DO SERVIDOR E REGISTRO'},
 {key:'servidor_assinatura',label:'Assinatura do servidor',type:'signature',section:'IDENTIFICAÇÃO DO SERVIDOR E REGISTRO'},
-{key:'data_registro',label:'Data do registro',type:'date',section:'IDENTIFICAÇÃO DO SERVIDOR E REGISTRO'}
+{key:'data_registro',label:'Data do registro',type:'date',section:'REGISTRO DO TERMO'}
 ]
 }
 const PREF_KEY='demutran.preferences.v1'
