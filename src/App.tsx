@@ -2,7 +2,6 @@ import { useEffect,useMemo,useState,type FormEvent } from 'react'
 import AuthGate from './components/AuthGate'
 import { supabase } from './lib/supabase'
 import { dbTables, fromDatabase, toDatabase } from './lib/data'
-import { dbTables, fromDatabase, toDatabase } from './lib/data'
 import { Activity,ArrowRight,Bell,CalendarDays,CheckCircle2,ClipboardCheck,ClipboardList,Contrast,Database,Download,Eye,LayoutDashboard,Menu,Package,Plus,Search,Settings,ShieldCheck,TrafficCone,Type,Users,Wrench,X,Pencil,Trash2,RotateCcw } from 'lucide-react'
 
 type Page='Início'|'Material'|'Usuários'|'Vistorias'|'Ordens de Serviço'|'Escala'|'Configurações'
