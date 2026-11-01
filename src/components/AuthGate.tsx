@@ -15,6 +15,8 @@ export default function AuthGate({children}:Props) {
   const [matricula,setMatricula]=useState('')
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
+  const [acceptedTerms,setAcceptedTerms]=useState(false)
+  const [acceptedPrivacy,setAcceptedPrivacy]=useState(false)
   const [notice,setNotice]=useState('')
   const [error,setError]=useState('')
 
@@ -43,7 +45,7 @@ export default function AuthGate({children}:Props) {
     event.preventDefault();setBusy(true);setError('');setNotice('')
     try{
       if(mode==='signup'){
-        const {data,error}=await supabase.auth.signUp({email:email.trim().toLowerCase(),password,options:{data:{full_name:name.trim(),matricula:matricula.trim()},emailRedirectTo:'https://devkove.github.io/Demutran/'}})
+        const {data,error}=await supabase.auth.signUp({email:email.trim().toLowerCase(),password,options:{data:{full_name:name.trim(),matricula:matricula.trim(),terms_accepted:acceptedTerms,privacy_accepted:acceptedPrivacy,terms_version:'1.0',privacy_version:'1.0'},emailRedirectTo:'https://devkove.github.io/Demutran/'}})
         if(error)throw error
         if(data.session){await loadProfile(data.session);setNotice('Cadastro realizado. Aguarde a aprovação do administrador.')}
         else{setMode('login');setNotice('Cadastro enviado. Confirme seu e-mail e aguarde a aprovação do administrador.')}
@@ -76,8 +78,9 @@ export default function AuthGate({children}:Props) {
       {mode==='signup'&&<><label><span>Nome completo</span><div className="auth-input"><UserPlus size={18}/><input required minLength={3} value={name} onChange={e=>setName(e.target.value)} autoComplete="name"/></div></label><label><span>Matrícula funcional</span><div className="auth-input"><UserPlus size={18}/><input required minLength={1} maxLength={30} value={matricula} onChange={e=>setMatricula(e.target.value.trimStart())} autoComplete="off"/></div></label></>}
       <label><span>E-mail institucional</span><div className="auth-input"><Mail size={18}/><input type="email" required value={email} onChange={e=>setEmail(e.target.value)} autoComplete="email"/></div></label>
       {mode!=='recovery'&&<label><span>Senha (mínimo 10 caracteres)</span><div className="auth-input"><LockKeyhole size={18}/><input type="password" required minLength={10} value={password} onChange={e=>setPassword(e.target.value)} autoComplete={mode==='login'?'current-password':'new-password'}/></div></label>}
+      {mode==='signup'&&<div className="auth-legal-consents"><label className="auth-consent"><input type="checkbox" required checked={acceptedTerms} onChange={e=>setAcceptedTerms(e.target.checked)}/><span>Li e aceito os <a href={`${import.meta.env.BASE_URL}termos-de-uso.html`} target="_blank" rel="noreferrer">Termos de Uso</a> (versão 1.0).</span></label><label className="auth-consent"><input type="checkbox" required checked={acceptedPrivacy} onChange={e=>setAcceptedPrivacy(e.target.checked)}/><span>Li e estou ciente da <a href={`${import.meta.env.BASE_URL}politica-de-privacidade.html`} target="_blank" rel="noreferrer">Política de Privacidade</a> (versão 1.0).</span></label><p>O cadastro só será enviado após os dois itens serem marcados. O aceite e as versões serão registrados no banco de dados.</p></div>}
       {mode==='login'&&<button type="button" className="auth-link auth-forgot" onClick={()=>{setMode('recovery');setError('')}}>Esqueci minha senha</button>}
-      <button className="auth-submit" disabled={busy}>{busy?'Aguarde...':mode==='login'?'Entrar':mode==='signup'?'Solicitar cadastro':'Enviar instruções'} <ArrowRight size={18}/></button>
+      <button className="auth-submit" disabled={busy||(mode==='signup'&&(!acceptedTerms||!acceptedPrivacy))}>{busy?'Aguarde...':mode==='login'?'Entrar':mode==='signup'?'Solicitar cadastro':'Enviar instruções'} <ArrowRight size={18}/></button>
     </form>
     <div className="auth-switch">{mode==='login'?'Ainda não possui acesso?':'Já possui cadastro?'} <button className="auth-link" onClick={()=>{setMode(mode==='login'?'signup':'login');setError('');setNotice('')}}>{mode==='login'?'Solicitar acesso':'Voltar ao login'}</button></div>
     <div className="auth-security">Autenticação gerenciada pelo Supabase</div>
