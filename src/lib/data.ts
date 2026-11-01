@@ -47,7 +47,6 @@ export function toDatabase(module: string, form: Record<string,string>): Record<
   }
   const allowed: Record<string,string[]> = {
     Material: ['nome','categoria','codigo','quantidade','minimo','unidade','local','obs'],
-    Vistorias: ['tipo','local','data','responsavel','resultado','parecer'],
     'Ordens de Serviço': ['titulo','categoria','local','solicitante','data','prioridade','status','descricao'],
     Escala: ['agente','data','turno','local','atividade','status','obs'],
     'Veículos de Aluguel': ['placa','marca','modelo','locadora','contrato','data_inicio','data_fim','valor_mensal','franquia_km','status','observacoes'],
