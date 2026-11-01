@@ -54,6 +54,8 @@ export function toDatabase(module: string, form: Record<string,string>): Record<
     'Veículos de Aluguel': ['placa','marca','modelo','locadora','contrato','data_inicio','data_fim','valor_mensal','franquia_km','status','observacoes'],
     RST: ['data_ocorrencia','local','tipo','gravidade','envolvidos','veiculos','placas','danos','boletim_ocorrencia','descricao','providencias','status'],
   }
-  return Object.fromEntries((allowed[module] || []).filter(key => form[key] !== '').map(key => [key, form[key]]))
+  const payload=Object.fromEntries((allowed[module] || []).filter(key => form[key] !== '').map(key => [key, form[key]])) as Record<string,string>
+  if(module==='RST'&&payload.data_ocorrencia)payload.data_ocorrencia=new Date(payload.data_ocorrencia).toISOString()
+  return payload
 }
 
