@@ -5,6 +5,8 @@ export const dbTables: Record<string,string> = {
   Usuários: 'profiles',
   'Ordens de Serviço': 'service_orders',
   Escala: 'shifts',
+  'Sinalização Viária': 'road_signage',
+  'Educação para o Trânsito': 'traffic_education_actions',
   'Veículos de Aluguel': 'rental_vehicles',
   Sinistro: 'traffic_accident_reports',
 }
@@ -49,6 +51,8 @@ export function toDatabase(module: string, form: Record<string,string>): Record<
     Material: ['nome','categoria','codigo','quantidade','minimo','unidade','local','obs'],
     'Ordens de Serviço': ['titulo','categoria','local','solicitante','data','prioridade','status','descricao'],
     Escala: ['agente','data','turno','local','atividade','status','obs'],
+    'Sinalização Viária': ['codigo','tipo','descricao','local','bairro','referencia','material','quantidade','condicao','status','data_instalacao','data_manutencao','responsavel','observacoes'],
+    'Educação para o Trânsito': ['titulo','tipo','publico_alvo','instituicao','local','data','horario','responsavel','participantes','status','descricao','resultado'],
     'Veículos de Aluguel': ['placa','marca','modelo','locadora','contrato','data_inicio','data_fim','valor_mensal','franquia_km','status','observacoes'],
     Sinistro: ['data_ocorrencia','municipio','local','local_numero',
     'v1_sexo_outro','v2_sexo_outro','v1_placa','v1_renavam','v1_marca_modelo','v1_especie_tipo','v1_ano_fabricacao','v1_ano_modelo','v1_cor','v1_condutor','v1_sexo','v1_categoria_cnh','v1_data_nascimento','v1_validade_cnh','v1_registro_cnh','v1_telefone','v1_endereco_condutor','v1_municipio_condutor','v1_proprietario','v1_endereco_proprietario','v1_municipio_proprietario',
