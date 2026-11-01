@@ -29,7 +29,7 @@ export function fromDatabase(module: string, raw: Record<string, unknown>): UiRo
     : module === 'Usuários'
     ? {
         nome: raw.full_name, email: raw.email, telefone: raw.phone || '',
-        cargo: raw.job_title || '',
+        cargo: raw.job_title || '', avatar_url: raw.avatar_url || '',
         perfil: roleToLabel[String(raw.role)] || 'Consulta',
         status: statusToLabel[String(raw.status)] || 'Pendente',
       }
