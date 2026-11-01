@@ -303,20 +303,20 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 }
 .topbar-user-center img,
 .topbar-user-center [aria-label="Sem foto cadastrada"] {
-  width: 50px !important;
-  height: 50px !important;
+  width: 75px !important;
+  height: 75px !important;
 }
 .topbar-user-name { min-width: 0; text-align: left; }
 .topbar-user-name strong,
 .topbar-user-name small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.topbar-user-name strong { color: #24262b; font-size: 14px; font-weight: 800; }
+.topbar-user-name strong { color: #24262b; font-size: 21px; font-weight: 800; }
 .topbar-user-name small { margin-top: 3px; color: #92959d; font-size: 10px; }
 @media (max-width: 850px) {
   .topbar { padding-inline: 16px; }
   .topbar-user-center { max-width: 34%; gap: 7px; }
   .topbar-user-center img,
-  .topbar-user-center [aria-label="Sem foto cadastrada"] { width: 42px !important; height: 42px !important; }
-  .topbar-user-name strong { font-size: 12px; }
+  .topbar-user-center [aria-label="Sem foto cadastrada"] { width: 63px !important; height: 63px !important; }
+  .topbar-user-name strong { font-size: 18px; }
   .topbar-user-name small { display: none; }
 }
 @media (max-width: 560px) {
