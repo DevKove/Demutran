@@ -1,6 +1,7 @@
 import { useEffect,useMemo,useState,type FormEvent } from 'react'
 import AuthGate from './components/AuthGate'
 import { supabase } from './lib/supabase'
+import { dbTables, fromDatabase, toDatabase } from './lib/data'
 import { Activity,ArrowRight,Bell,CalendarDays,CheckCircle2,ClipboardCheck,ClipboardList,Contrast,Database,Download,Eye,LayoutDashboard,Menu,Package,Plus,Search,Settings,ShieldCheck,TrafficCone,Type,Users,Wrench,X,Pencil,Trash2,RotateCcw } from 'lucide-react'
 
 type Page='Início'|'Material'|'Usuários'|'Vistorias'|'Ordens de Serviço'|'Escala'|'Configurações'
@@ -16,15 +17,14 @@ Vistorias:[{key:'tipo',label:'Tipo de vistoria',required:true},{key:'local',labe
 'Ordens de Serviço':[{key:'titulo',label:'Serviço solicitado',required:true},{key:'categoria',label:'Categoria',type:'select',required:true,options:['Sinalização viária','Semáforos','Engenharia de tráfego','Manutenção','Fiscalização','Outros']},{key:'local',label:'Local do serviço',required:true},{key:'solicitante',label:'Solicitante'},{key:'data',label:'Data de abertura',type:'date',required:true},{key:'prioridade',label:'Prioridade',type:'select',options:['Baixa','Média','Alta','Urgente']},{key:'status',label:'Status',type:'select',options:['Solicitada','Aguardando','Em execução','Concluída','Cancelada']},{key:'descricao',label:'Descrição',type:'textarea'}],
 Escala:[{key:'agente',label:'Agente / equipe',required:true},{key:'data',label:'Data',type:'date',required:true},{key:'turno',label:'Turno',type:'select',required:true,options:['Manhã','Tarde','Noite','Plantão 24h']},{key:'local',label:'Local de atuação',required:true},{key:'atividade',label:'Atividade'},{key:'status',label:'Situação',type:'select',options:['Programada','Em andamento','Concluída','Ausência','Substituída']},{key:'obs',label:'Observações',type:'textarea'}]
 }
-const DATA_KEY='demutran.data.v1',PREF_KEY='demutran.preferences.v1'
-const readData=():Record<string,Row[]>=>{try{const value=JSON.parse(localStorage.getItem(DATA_KEY)||'{}');return value&&typeof value==='object'&&!Array.isArray(value)?value:{}}catch{return {}}}
+const PREF_KEY='demutran.preferences.v1'
 const readPreferences=():Preferences=>{try{const value=JSON.parse(localStorage.getItem(PREF_KEY)||'{}');return {fontSize:['normal','large','xlarge'].includes(value.fontSize)?value.fontSize:'large',contrast:Boolean(value.contrast)}}catch{return {fontSize:'large',contrast:false}}}
 const formatDate=(value?:string)=>value?new Intl.DateTimeFormat('pt-BR').format(new Date(value+'T00:00:00')):'—'
 const today=()=>new Date().toISOString().slice(0,10)
 
 function AppContent(){
- const [page,setPage]=useState<Page>('Início'),[menu,setMenu]=useState(false),[search,setSearch]=useState(''),[data,setData]=useState<Record<string,Row[]>>(readData),[preferences,setPreferences]=useState<Preferences>(readPreferences),[modal,setModal]=useState<'form'|'view'|''>(''),[selected,setSelected]=useState<Row|null>(null),[form,setForm]=useState<Record<string,string>>({}),[message,setMessage]=useState(''),[notifications,setNotifications]=useState(false)
- useEffect(()=>{try{localStorage.setItem(DATA_KEY,JSON.stringify(data))}catch{setMessage('Não foi possível salvar: armazenamento local indisponível ou cheio.')}},[data])
+ const [page,setPage]=useState<Page>('Início'),[menu,setMenu]=useState(false),[search,setSearch]=useState(''),[data,setData]=useState<Record<string,Row[]>>({}),[preferences,setPreferences]=useState<Preferences>(readPreferences),[modal,setModal]=useState<'form'|'view'|''>(''),[selected,setSelected]=useState<Row|null>(null),[form,setForm]=useState<Record<string,string>>({}),[message,setMessage]=useState(''),[notifications,setNotifications]=useState(false)
+ useEffect(()=>{let active=true;const load=async()=>{const entries=await Promise.all(Object.entries(dbTables).map(async([module,table])=>{const {data:records,error}=await supabase.from(table).select('*').order('created_at',{ascending:false});if(error)throw error;return [module,(records||[]).map(record=>fromDatabase(module,record))] as const}));if(active)setData(Object.fromEntries(entries))};load().catch(error=>{if(active)setMessage('Falha ao carregar dados do Supabase: '+error.message)});return()=>{active=false}},[])
  useEffect(()=>{try{localStorage.setItem(PREF_KEY,JSON.stringify(preferences));document.documentElement.dataset.fontSize=preferences.fontSize;document.documentElement.dataset.contrast=String(preferences.contrast)}catch{setMessage('Não foi possível salvar as preferências neste navegador.')}},[preferences])
  useEffect(()=>{const handler=(event:KeyboardEvent)=>{if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'){event.preventDefault();document.querySelector<HTMLInputElement>('.search-box input')?.focus()}if(event.key==='Escape'){setModal('');setNotifications(false);setMenu(false)}};window.addEventListener('keydown',handler);return()=>window.removeEventListener('keydown',handler)},[])
  const fields=schemas[page]||[],rows=data[page]||[],filtered=useMemo(()=>rows.filter(row=>Object.values(row).some(value=>String(value).toLocaleLowerCase('pt-BR').includes(search.trim().toLocaleLowerCase('pt-BR')))),[rows,search])
