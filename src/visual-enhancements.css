@@ -680,3 +680,12 @@ body{
  .metric-card,.panel,.module-action,.settings-panel,.reports-filters,.reports-results{transition:none!important}
  .metric-card:hover,.panel:hover,.module-action:hover,.settings-panel:hover,.reports-filters:hover,.reports-results:hover{transform:none!important}
 }
+
+
+/* Links legais no rodapé global */
+.footer{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.footer-legal{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+.footer-legal a{color:inherit;font-weight:650;text-decoration:underline;text-decoration-color:rgba(255,255,255,.55);text-underline-offset:3px;transition:color .2s ease,opacity .2s ease}
+.footer-legal a:hover{color:#f4c51b;opacity:1}
+.footer-legal a:focus-visible{outline:2px solid #f4c51b;outline-offset:4px;border-radius:3px}
+@media(max-width:640px){.footer{justify-content:center;text-align:center}.footer-legal{width:100%;gap:14px}.footer-sync{width:100%;justify-content:center}}
