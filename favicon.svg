@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Cone de sinalização DEMUTRAN</title>
+  <path d="M10 51h44l5 7H5z" fill="#202124"/>
+  <path d="M27 7c2-4 8-4 10 0l16 44H11z" fill="#f5a623" stroke="#b96b12" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M20 31h24l4 10H16z" fill="#fff" stroke="#e4e7eb" stroke-width="1"/>
+  <path d="M25 18h14l4 9H21z" fill="#fff" stroke="#e4e7eb" stroke-width="1"/>
+  <path d="M27 7c2-4 8-4 10 0l3 8H24z" fill="#f7bd3b"/>
+  <path d="M10 51h44" stroke="#111827" stroke-width="2" stroke-linecap="round"/>
+</svg>
