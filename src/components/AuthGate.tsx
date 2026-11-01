@@ -42,7 +42,7 @@ export default function AuthGate({children}:Props) {
     event.preventDefault();setBusy(true);setError('');setNotice('')
     try{
       if(mode==='signup'){
-        const {data,error}=await supabase.auth.signUp({email:email.trim().toLowerCase(),password,options:{data:{full_name:name.trim()},emailRedirectTo:window.location.origin+import.meta.env.BASE_URL}})
+        const {data,error}=await supabase.auth.signUp({email:email.trim().toLowerCase(),password,options:{data:{full_name:name.trim()},emailRedirectTo:'https://devkove.github.io/Demutran/'}})
         if(error)throw error
         if(data.session){await loadProfile(data.session);setNotice('Cadastro realizado. Aguarde a aprovação do administrador.')}
         else{setMode('login');setNotice('Cadastro enviado. Confirme seu e-mail e aguarde a aprovação do administrador.')}
