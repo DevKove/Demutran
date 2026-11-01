@@ -273,3 +273,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .desktop-nav-item { flex: 0 0 auto; padding-inline: 12px; }
   .desktop-nav-settings { margin-left: auto; }
 }
+
+
+/* Formulário do Termo de Declaração de Acidente de Trânsito */
+.form-field-group{display:contents}.form-section-title{grid-column:1/-1;margin:18px 0 0;padding:12px 0 8px;border-bottom:1px solid var(--line,#e5e7eb);font-size:12px;font-weight:800;letter-spacing:.07em;color:var(--muted,#687080)}.form-section-title:first-child{margin-top:0}.record-modal form .form-grid{align-items:start}.record-modal form .form-grid label{min-width:0}.record-modal form .form-grid input,.record-modal form .form-grid select,.record-modal form .form-grid textarea{width:100%;min-width:0}.record-modal form .form-grid textarea{resize:vertical;min-height:92px}
