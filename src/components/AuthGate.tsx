@@ -12,6 +12,7 @@ export default function AuthGate({children}:Props) {
   const [busy,setBusy]=useState(false)
   const [mode,setMode]=useState<'login'|'signup'|'recovery'>('login')
   const [name,setName]=useState('')
+  const [matricula,setMatricula]=useState('')
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
   const [notice,setNotice]=useState('')
@@ -42,7 +43,7 @@ export default function AuthGate({children}:Props) {
     event.preventDefault();setBusy(true);setError('');setNotice('')
     try{
       if(mode==='signup'){
-        const {data,error}=await supabase.auth.signUp({email:email.trim().toLowerCase(),password,options:{data:{full_name:name.trim()},emailRedirectTo:'https://devkove.github.io/Demutran/'}})
+        const {data,error}=await supabase.auth.signUp({email:email.trim().toLowerCase(),password,options:{data:{full_name:name.trim(),matricula:matricula.trim()},emailRedirectTo:'https://devkove.github.io/Demutran/'}})
         if(error)throw error
         if(data.session){await loadProfile(data.session);setNotice('Cadastro realizado. Aguarde a aprovação do administrador.')}
         else{setMode('login');setNotice('Cadastro enviado. Confirme seu e-mail e aguarde a aprovação do administrador.')}
@@ -72,7 +73,7 @@ export default function AuthGate({children}:Props) {
     <p className="auth-description">{mode==='login'?'Entre com suas credenciais institucionais.':mode==='signup'?'Crie seu cadastro. O acesso depende da aprovação do administrador.':'Informe seu e-mail para receber as instruções.'}</p>
     {notice&&<div className="auth-notice">{notice}</div>}{error&&<div className="auth-error" role="alert">{error}</div>}
     <form className="auth-form" onSubmit={submit}>
-      {mode==='signup'&&<label><span>Nome completo</span><div className="auth-input"><UserPlus size={18}/><input required minLength={3} value={name} onChange={e=>setName(e.target.value)} autoComplete="name"/></div></label>}
+      {mode==='signup'&&<><label><span>Nome completo</span><div className="auth-input"><UserPlus size={18}/><input required minLength={3} value={name} onChange={e=>setName(e.target.value)} autoComplete="name"/></div></label><label><span>Matrícula funcional</span><div className="auth-input"><UserPlus size={18}/><input required minLength={1} maxLength={30} value={matricula} onChange={e=>setMatricula(e.target.value.trimStart())} autoComplete="off"/></div></label></>}
       <label><span>E-mail institucional</span><div className="auth-input"><Mail size={18}/><input type="email" required value={email} onChange={e=>setEmail(e.target.value)} autoComplete="email"/></div></label>
       {mode!=='recovery'&&<label><span>Senha (mínimo 10 caracteres)</span><div className="auth-input"><LockKeyhole size={18}/><input type="password" required minLength={10} value={password} onChange={e=>setPassword(e.target.value)} autoComplete={mode==='login'?'current-password':'new-password'}/></div></label>}
       {mode==='login'&&<button type="button" className="auth-link auth-forgot" onClick={()=>{setMode('recovery');setError('')}}>Esqueci minha senha</button>}
