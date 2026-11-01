@@ -222,6 +222,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 
 
 /* Navegação horizontal no desktop; menu lateral retrátil preservado no mobile */
+.desktop-nav { display: none; }
 @media (min-width: 851px) {
   .sidebar { display: none; }
   .main-area { margin-left: 0; }
@@ -259,7 +260,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .desktop-nav-item .nav-count { margin-left: 1px; }
   .desktop-nav-settings { margin-left: auto; border-color: #ffffff20; }
 }
-.desktop-nav { display: none; }
 @media (max-width: 850px) {
   .desktop-nav { display: none !important; }
   .sidebar { display: flex; }
