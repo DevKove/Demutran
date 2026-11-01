@@ -689,3 +689,27 @@ body{
 .footer-legal a:hover{color:#f4c51b;opacity:1}
 .footer-legal a:focus-visible{outline:2px solid #f4c51b;outline-offset:4px;border-radius:3px}
 @media(max-width:640px){.footer{justify-content:center;text-align:center}.footer-legal{width:100%;gap:14px}.footer-sync{width:100%;justify-content:center}}
+
+
+/* Corrige o fundo no limite inferior da página e ancora o rodapé */
+html, body, #root {
+  min-height: 100%;
+  background-color: #101b2b;
+}
+body { min-height: 100vh; }
+#root, .app-shell { min-height: 100vh; }
+.main-area {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.main-area > .page-content {
+  flex: 1 0 auto;
+  width: 100%;
+}
+.main-area > .footer {
+  flex: 0 0 auto;
+  margin-top: auto;
+  padding-bottom: 20px;
+  background: transparent !important;
+}
