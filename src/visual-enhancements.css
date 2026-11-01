@@ -279,3 +279,185 @@ body {
  .reports-results th,.reports-results td { padding:6px !important; border:1px solid #e2e7ed !important; overflow-wrap:anywhere !important; }
  .reports-results tr { break-inside:avoid; }
 }
+
+
+/* Paleta de superfícies e contraste — DEMUTRAN */
+:root {
+  --dm-bg: #edf1f6;
+  --dm-surface: #ffffff;
+  --dm-surface-soft: #f7f9fc;
+  --dm-text: #182230;
+  --dm-text-secondary: #526071;
+  --dm-muted: #687587;
+  --dm-border: #d5dde7;
+  --dm-gold-deep: #8a6800;
+  --dm-focus: #b58a00;
+}
+body {
+  color: var(--dm-text);
+  background:
+    radial-gradient(ellipse at 92% 0%, rgb(244 196 0 / 10%), transparent 30rem),
+    linear-gradient(145deg, #e9eef5 0%, #f2f4f8 48%, #f8f7f2 100%);
+}
+.topbar {
+  background: rgb(255 255 255 / 96%);
+  border-bottom: 1px solid #cbd5e1;
+  box-shadow: 0 3px 14px rgb(25 38 55 / 5%);
+}
+.desktop-nav {
+  background: linear-gradient(110deg, #111b2a 0%, #1c2939 55%, #111b2a 100%);
+}
+.sidebar {
+  background:
+    radial-gradient(circle at 0 0, rgb(244 196 0 / 12%), transparent 18rem),
+    linear-gradient(180deg, #172334 0%, #101925 100%);
+}
+.page-heading h1 { color: #172334; }
+.page-heading .eyebrow { color: #735800; }
+.page-heading p, .module-intro p, .module-toolbar p,
+.records-heading p, .reports-filter-heading p,
+.reports-results-heading p, .settings-title p {
+  color: var(--dm-text-secondary);
+}
+.metric-card, .panel, .module-toolbar, .records-panel,
+.settings-panel, .shortcut-card, .notice-card,
+.module-action, .reports-filters, .reports-results,
+.reports-stats article {
+  background: var(--dm-surface);
+  border: 1px solid var(--dm-border);
+  box-shadow: 0 5px 18px rgb(24 39 58 / 5%);
+}
+.module-intro, .records-heading, .modal-heading {
+  background: linear-gradient(110deg, #fff 0%, #fff 72%, #fff8df 100%);
+}
+.metric-card:hover, .panel:hover, .settings-panel:hover {
+  border-color: #c6a52e;
+  box-shadow: 0 12px 28px rgb(24 39 58 / 9%);
+}
+.metric-bottom span, .operation-row, .summary-stat,
+.form-grid label, .records-filter { color: #465365; }
+.metric-bottom small, td small, .profile-info small { color: #687587; }
+table th {
+  color: #465365;
+  background: #f0f3f7;
+  border-bottom: 1px solid #cbd5e1;
+}
+table td { color: #354255; border-bottom-color: #e1e6ed; }
+table td strong { color: #182638; }
+.records-table tbody tr:nth-child(even) { background: #f8fafc; }
+.records-table tbody tr:hover { background: #fff7d8; }
+.form-grid input, .form-grid select, .form-grid textarea,
+.reports-filter-grid input, .reports-filter-grid select,
+.search-box {
+  color: #172334;
+  background: #f8fafc;
+  border-color: #c6d0dc;
+}
+.form-grid input::placeholder, .form-grid textarea::placeholder,
+.search-box input::placeholder { color: #687587; opacity: 1; }
+.form-grid input:focus, .form-grid select:focus,
+.form-grid textarea:focus, .reports-filter-grid input:focus,
+.reports-filter-grid select:focus {
+  border-color: #b58a00;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgb(244 196 0 / 22%);
+}
+.secondary-button, .shortcut-actions button, .row-actions button {
+  color: #263548;
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+.secondary-button:hover, .shortcut-actions button:hover,
+.row-actions button:hover {
+  color: #624b00;
+  border-color: #c5a02b;
+  background: #fff8df;
+}
+.text-action, .order-id { color: #765900; }
+.module-action-copy strong, .reports-stats strong { color: #182638; }
+.module-action-copy small, .reports-stats span { color: #526071; }
+.status, .priority { font-weight: 750; }
+.inline-notice {
+  color: #594500;
+  background: #fff7d8;
+  border-color: #dfc66a;
+}
+.empty-state p, .dashboard-empty { color: #526071; }
+.detail-grid>div { background: #f8fafc; border-color: #d8e0e9; }
+.detail-grid dt { color: #526071; }
+.detail-grid dd { color: #172334; }
+.setting-preview { background: #f4f7fb; border-color: #cbd5e1; }
+.footer { color: #667386; border-top-color: #d4dce6; }
+button:focus-visible, a:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 3px solid rgb(181 138 0 / 72%);
+  outline-offset: 2px;
+}
+
+/* Modo de alto contraste configurável em Definições */
+html[data-contrast="true"] {
+  --dm-bg: #ffffff;
+  --dm-surface: #ffffff;
+  --dm-text: #000000;
+  --dm-text-secondary: #202020;
+  --dm-muted: #303030;
+  --dm-border: #555555;
+}
+html[data-contrast="true"] body,
+html[data-contrast="true"] .page-content { color: #000; background: #fff; }
+html[data-contrast="true"] .topbar,
+html[data-contrast="true"] .metric-card,
+html[data-contrast="true"] .panel,
+html[data-contrast="true"] .module-toolbar,
+html[data-contrast="true"] .records-panel,
+html[data-contrast="true"] .settings-panel,
+html[data-contrast="true"] .module-action,
+html[data-contrast="true"] .reports-filters,
+html[data-contrast="true"] .reports-results,
+html[data-contrast="true"] .reports-stats article,
+html[data-contrast="true"] .record-modal {
+  color: #000;
+  background: #fff;
+  border: 1px solid #555;
+  box-shadow: none;
+}
+html[data-contrast="true"] .page-heading h1,
+html[data-contrast="true"] .module-action-copy strong,
+html[data-contrast="true"] .reports-stats strong,
+html[data-contrast="true"] table td,
+html[data-contrast="true"] table td strong,
+html[data-contrast="true"] .detail-grid dd { color: #000; }
+html[data-contrast="true"] .page-heading p,
+html[data-contrast="true"] .module-intro p,
+html[data-contrast="true"] .module-toolbar p,
+html[data-contrast="true"] .records-heading p,
+html[data-contrast="true"] .module-action-copy small,
+html[data-contrast="true"] .reports-stats span,
+html[data-contrast="true"] .empty-state p,
+html[data-contrast="true"] .detail-grid dt { color: #202020; }
+html[data-contrast="true"] table th {
+  color: #fff;
+  background: #171717;
+  border-color: #555;
+}
+html[data-contrast="true"] table td,
+html[data-contrast="true"] .form-grid input,
+html[data-contrast="true"] .form-grid select,
+html[data-contrast="true"] .form-grid textarea,
+html[data-contrast="true"] .reports-filter-grid input,
+html[data-contrast="true"] .reports-filter-grid select {
+  color: #000;
+  background: #fff;
+  border-color: #555;
+}
+html[data-contrast="true"] .sidebar,
+html[data-contrast="true"] .desktop-nav { background: #000; }
+html[data-contrast="true"] .nav-item,
+html[data-contrast="true"] .desktop-nav-item { color: #fff; }
+html[data-contrast="true"] .nav-item.active,
+html[data-contrast="true"] .desktop-nav-item.active,
+html[data-contrast="true"] .primary-button { color: #000; background: #ffdc35; }
+@media (prefers-reduced-motion: reduce) {
+  .metric-card, .panel, .settings-panel, .module-action,
+  .records-table tbody tr { transition: none !important; }
+}
