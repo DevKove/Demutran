@@ -28,7 +28,7 @@ export function fromDatabase(module: string, raw: Record<string, unknown>): UiRo
     : module === 'Sinistro' ? { ...raw, danos_veiculo1_imagens: JSON.stringify(Array.isArray(raw.danos_veiculo1_imagens)?raw.danos_veiculo1_imagens:[]), danos_veiculo2_imagens: JSON.stringify(Array.isArray(raw.danos_veiculo2_imagens)?raw.danos_veiculo2_imagens:[]), numero: String(raw.numero ?? '').padStart(4,'0'), data_ocorrencia: raw.data_ocorrencia ? (()=>{const d=new Date(String(raw.data_ocorrencia));d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,16)})() : '' }
     : module === 'Usuários'
     ? {
-        nome: raw.full_name, email: raw.email, telefone: raw.phone || '',
+        nome: raw.full_name, matricula: raw.matricula || '', email: raw.email, telefone: raw.phone || '',
         cargo: raw.job_title || '', avatar_url: raw.avatar_url || '',
         perfil: roleToLabel[String(raw.role)] || 'Consulta',
         status: statusToLabel[String(raw.status)] || 'Pendente',
@@ -41,7 +41,7 @@ export function fromDatabase(module: string, raw: Record<string, unknown>): UiRo
 export function toDatabase(module: string, form: Record<string,string>): Record<string,string> {
   if (module === 'Usuários') {
     return {
-      full_name: form.nome, phone: form.telefone || '', job_title: form.cargo || '',
+      full_name: form.nome, matricula: form.matricula || '', phone: form.telefone || '', job_title: form.cargo || '',
       role: labelToRole[form.perfil] || 'consulta',
       status: labelToStatus[form.status] || 'pending',
     }
@@ -55,7 +55,7 @@ export function toDatabase(module: string, form: Record<string,string>): Record<
     Sinistro: ['data_ocorrencia','municipio','local','local_numero',
     'v1_sexo_outro','v2_sexo_outro','v1_placa','v1_renavam','v1_marca_modelo','v1_especie_tipo','v1_ano_fabricacao','v1_ano_modelo','v1_cor','v1_condutor','v1_sexo','v1_categoria_cnh','v1_data_nascimento','v1_validade_cnh','v1_registro_cnh','v1_telefone','v1_endereco_condutor','v1_municipio_condutor','v1_proprietario','v1_endereco_proprietario','v1_municipio_proprietario',
     'v2_placa','v2_renavam','v2_marca_modelo','v2_especie_tipo','v2_ano_fabricacao','v2_ano_modelo','v2_cor','v2_condutor','v2_sexo','v2_categoria_cnh','v2_data_nascimento','v2_validade_cnh','v2_registro_cnh','v2_telefone','v2_endereco_condutor','v2_municipio_condutor','v2_proprietario','v2_endereco_proprietario','v2_municipio_proprietario',
-    'testemunha1_nome','testemunha1_rg','testemunha1_endereco','testemunha1_telefone','testemunha2_nome','testemunha2_rg','testemunha2_endereco','testemunha2_telefone','testemunha3_nome','testemunha3_rg','testemunha3_endereco','testemunha3_telefone','testemunha4_nome','testemunha4_rg','testemunha4_endereco','testemunha4_telefone','danos_veiculo1_imagens','danos_veiculo2_imagens','versao_v1','versao_v2','danos_veiculo1','danos_veiculo2','assinatura_condutor1','assinatura_condutor2','comunicante1_nome','comunicante1_assinatura','comunicante1_cpf','comunicante2_nome','comunicante2_assinatura','comunicante2_cpf','servidor_nome','servidor_matricula','servidor_assinatura','data_registro'],
+    'testemunha1_nome','testemunha1_rg','testemunha1_endereco','testemunha1_telefone','testemunha2_nome','testemunha2_rg','testemunha2_endereco','testemunha2_telefone','testemunha3_nome','testemunha3_rg','testemunha3_endereco','testemunha3_telefone','testemunha4_nome','testemunha4_rg','testemunha4_endereco','testemunha4_telefone','danos_veiculo1_imagens','danos_veiculo2_imagens','versao_v1','versao_v2','danos_veiculo1','danos_veiculo2','assinatura_condutor1','assinatura_condutor2','comunicante1_nome','comunicante1_assinatura','comunicante1_cpf','comunicante2_nome','comunicante2_assinatura','comunicante2_cpf','servidor_matricula','servidor_assinatura','data_registro'],
   }
   const payload=Object.fromEntries((allowed[module] || []).filter(key => form[key] !== '').map(key => [key, module==='Sinistro'&&key.endsWith('_imagens')?JSON.parse(form[key]||'[]'):form[key]])) as Record<string,any>
   if(module==='Sinistro'){for(const key of ['v1_data_nascimento','v1_validade_cnh','v2_data_nascimento','v2_validade_cnh','data_registro'])if(payload[key]==='')delete payload[key];}
