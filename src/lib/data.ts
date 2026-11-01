@@ -28,7 +28,7 @@ export function fromDatabase(module: string, raw: Record<string, unknown>): UiRo
     : module === 'Sinistro' ? { ...raw, danos_veiculo1_imagens: JSON.stringify(Array.isArray(raw.danos_veiculo1_imagens)?raw.danos_veiculo1_imagens:[]), danos_veiculo2_imagens: JSON.stringify(Array.isArray(raw.danos_veiculo2_imagens)?raw.danos_veiculo2_imagens:[]), numero: String(raw.numero ?? '').padStart(4,'0'), data_ocorrencia: raw.data_ocorrencia ? (()=>{const d=new Date(String(raw.data_ocorrencia));d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,16)})() : '' }
     : module === 'Usuários'
     ? {
-        nome: raw.full_name, email: raw.email, telefone: raw.phone || '',
+        nome: raw.full_name, matricula: raw.matricula || '', email: raw.email, telefone: raw.phone || '',
         cargo: raw.job_title || '', avatar_url: raw.avatar_url || '',
         perfil: roleToLabel[String(raw.role)] || 'Consulta',
         status: statusToLabel[String(raw.status)] || 'Pendente',
@@ -41,7 +41,7 @@ export function fromDatabase(module: string, raw: Record<string, unknown>): UiRo
 export function toDatabase(module: string, form: Record<string,string>): Record<string,string> {
   if (module === 'Usuários') {
     return {
-      full_name: form.nome, phone: form.telefone || '', job_title: form.cargo || '',
+      full_name: form.nome, matricula: form.matricula || '', phone: form.telefone || '', job_title: form.cargo || '',
       role: labelToRole[form.perfil] || 'consulta',
       status: labelToStatus[form.status] || 'pending',
     }
