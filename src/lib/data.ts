@@ -6,6 +6,8 @@ export const dbTables: Record<string,string> = {
   Vistorias: 'inspections',
   'Ordens de Serviço': 'service_orders',
   Escala: 'shifts',
+  'Veículos de Aluguel': 'rental_vehicles',
+  RST: 'traffic_accident_reports',
 }
 
 const roleToLabel: Record<string,string> = {
@@ -22,7 +24,9 @@ const labelToStatus: Record<string,string> = {
 }
 
 export function fromDatabase(module: string, raw: Record<string, unknown>): UiRow {
-  const values = module === 'Usuários'
+  const values = module === 'Veículos de Aluguel' ? { ...raw, data_inicio: raw.data_inicio || '', data_fim: raw.data_fim || '' }
+    : module === 'RST' ? { ...raw, data_ocorrencia: raw.data_ocorrencia ? new Date(String(raw.data_ocorrencia)).toISOString().slice(0,16) : '' }
+    : module === 'Usuários'
     ? {
         nome: raw.full_name, email: raw.email, telefone: raw.phone || '',
         cargo: raw.job_title || '',
@@ -47,6 +51,8 @@ export function toDatabase(module: string, form: Record<string,string>): Record<
     Vistorias: ['tipo','local','data','responsavel','resultado','parecer'],
     'Ordens de Serviço': ['titulo','categoria','local','solicitante','data','prioridade','status','descricao'],
     Escala: ['agente','data','turno','local','atividade','status','obs'],
+    'Veículos de Aluguel': ['placa','marca','modelo','locadora','contrato','data_inicio','data_fim','valor_mensal','franquia_km','status','observacoes'],
+    RST: ['data_ocorrencia','local','tipo','gravidade','envolvidos','veiculos','placas','danos','boletim_ocorrencia','descricao','providencias','status'],
   }
   return Object.fromEntries((allowed[module] || []).filter(key => form[key] !== '').map(key => [key, form[key]]))
 }
