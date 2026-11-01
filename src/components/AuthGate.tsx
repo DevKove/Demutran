@@ -47,7 +47,7 @@ export default function AuthGate({children}:Props) {
         if(data.session){await loadProfile(data.session);setNotice('Cadastro realizado. Aguarde a aprovação do administrador.')}
         else{setMode('login');setNotice('Cadastro enviado. Confirme seu e-mail e aguarde a aprovação do administrador.')}
       }else if(mode==='recovery'){
-        const {error}=await supabase.auth.resetPasswordForEmail(email.trim().toLowerCase(),{redirectTo:window.location.origin+import.meta.env.BASE_URL})
+        const {error}=await supabase.auth.resetPasswordForEmail(email.trim().toLowerCase(),{redirectTo:'https://devkove.github.io/Demutran/'})
         if(error)throw error
         setMode('login');setNotice('Se o e-mail estiver cadastrado, você receberá as instruções de recuperação.')
       }else{
