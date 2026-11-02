@@ -759,35 +759,3 @@ body {
     min-height: calc(100vh - 65px);
   }
 }
-
-
-/* Fundo contínuo: elimina áreas sem pintura após o fim do conteúdo */
-:root,
-html,
-body,
-#root,
-.app-shell,
-.main-area {
-  background-color: #f1f3f6 !important;
-  background-image:
-    radial-gradient(ellipse at 88% 4%, rgb(244 196 0 / 8%), transparent 27rem),
-    linear-gradient(145deg, #f8f9fb 0%, #f1f3f6 52%, #faf9f4 100%) !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-  background-attachment: fixed !important;
-}
-html,
-body {
-  min-height: 100%;
-}
-body,
-#root,
-.app-shell,
-.main-area {
-  min-height: 100vh;
-}
-.app-shell,
-.main-area,
-.page-content {
-  background-color: transparent !important;
-}
