@@ -35,35 +35,49 @@ async function fillFormField(page: Page, item: { label: string; value?: string; 
 
 async function runCrudJourney(page: Page, module: string, uniqueField: string, value: string, extra: Array<{label:string;value?:string;select?:boolean}> = []) {
   const testMarker = marker()
-  let record: Locator | null = null
-  await openModule(page, module)
-  await page.getByRole('button', { name: 'Novo cadastro', exact: true }).click()
-  await expect(page.getByRole('dialog')).toBeVisible()
+  const record = page.locator('.record-card').filter({ hasText: testMarker })
+  try {
+    await openModule(page, module)
+    await page.getByRole('button', { name: 'Novo cadastro', exact: true }).click()
+    await expect(page.getByRole('dialog')).toBeVisible()
 
-  const unique = await field(page, uniqueField)
-  await unique.fill(`${value} ${testMarker}`)
-  for (const item of extra) await fillFormField(page, item)
+    await (await field(page, uniqueField)).fill(`${value} ${testMarker}`)
+    for (const item of extra) await fillFormField(page, item)
 
-  await page.getByRole('dialog').getByRole('button', { name: /Salvar registro/i }).click()
-  await expect(page.getByRole('dialog')).toBeHidden({ timeout: 30_000 })
-  await expect(page.getByRole('status')).toContainText(/cadastrado no banco de dados/i, { timeout: 15_000 })
+    await page.getByRole('dialog').getByRole('button', { name: /Salvar registro/i }).click()
+    await expect(page.getByRole('dialog')).toBeHidden({ timeout: 30_000 })
+    await expect(page.getByRole('status')).toContainText(/cadastrado no banco de dados/i, { timeout: 15_000 })
 
-  await page.getByRole('button', { name: 'Histórico', exact: true }).click()
-  record = page.locator('.record-card').filter({ hasText: testMarker })
-  await expect(record).toHaveCount(1, { timeout: 20_000 })
+    await page.getByRole('button', { name: 'Histórico', exact: true }).click()
+    await expect(record).toHaveCount(1, { timeout: 20_000 })
 
-  await record.getByRole('button', { name: 'Editar' }).click()
-  await expect(page.getByRole('dialog')).toBeVisible()
-  const editedValue = `${value} EDITADO ${testMarker}`
-  await (await field(page, uniqueField)).fill(editedValue)
-  await page.getByRole('dialog').getByRole('button', { name: /Salvar registro/i }).click()
-  await expect(page.getByRole('dialog')).toBeHidden({ timeout: 30_000 })
-  await expect(page.getByRole('status')).toContainText(/atualizado no banco de dados/i, { timeout: 15_000 })
-  await expect(record).toContainText('EDITADO', { timeout: 15_000 })
+    await record.getByRole('button', { name: 'Editar' }).click()
+    await expect(page.getByRole('dialog')).toBeVisible()
+    await (await field(page, uniqueField)).fill(`${value} EDITADO ${testMarker}`)
+    await page.getByRole('dialog').getByRole('button', { name: /Salvar registro/i }).click()
+    await expect(page.getByRole('dialog')).toBeHidden({ timeout: 30_000 })
+    await expect(page.getByRole('status')).toContainText(/atualizado no banco de dados/i, { timeout: 15_000 })
+    await expect(record).toContainText('EDITADO', { timeout: 15_000 })
 
-  page.once('dialog', dialog => dialog.accept())
-  await record.getByRole('button', { name: 'Excluir' }).click()
-  await expect(record).toHaveCount(0, { timeout: 20_000 })
+    page.once('dialog', dialog => dialog.accept())
+    await record.getByRole('button', { name: 'Excluir' }).click()
+    await expect(record).toHaveCount(0, { timeout: 20_000 })
+  } finally {
+    // Limpeza de melhor esforço: remove apenas o registro criado por esta execução.
+    try {
+      const modal = page.getByRole('dialog')
+      if (await modal.count()) await modal.getByRole('button', { name: 'Cancelar' }).click()
+      const history = page.getByRole('button', { name: 'Histórico', exact: true })
+      if (await history.count()) await history.click()
+      if (await record.count()) {
+        page.once('dialog', dialog => dialog.accept())
+        await record.getByRole('button', { name: 'Excluir' }).click()
+        await expect(record).toHaveCount(0, { timeout: 15_000 })
+      }
+    } catch {
+      // A falha de limpeza permanece visível no relatório original; não mascara a causa do teste.
+    }
+  }
 }
 
 test.describe('Jornada administrativa DEMUTRAN — CRUD real pela interface', () => {
@@ -105,8 +119,8 @@ test.describe('Jornada administrativa DEMUTRAN — CRUD real pela interface', ()
   })
 
   test('Veículos de Aluguel: cadastrar, editar, consultar e excluir', async ({ page }) => {
-    await runCrudJourney(page, 'Veículos de Aluguel', 'Placa', 'QAZ-9A99', [
-      { label: 'Modelo', value: 'Veículo de teste QA' }, { label: 'Empresa locadora', value: 'Locadora QA' },
+    await runCrudJourney(page, 'Veículos de Aluguel', 'Empresa locadora', 'Locadora QA', [
+      { label: 'Placa', value: 'QAZ-9A99' }, { label: 'Modelo', value: 'Veículo de teste QA' },
       { label: 'Valor mensal', value: '1000.00' },
     ])
   })
