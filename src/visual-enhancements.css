@@ -856,3 +856,25 @@ select:focus-visible,textarea:focus-visible {
 @media (max-width: 850px) {
   .main-area:after { display: none; }
 }
+
+/* DEMUTRAN — trilho da rolagem acompanha a identidade visual.
+   Escopo restrito às barras de rolagem; não altera fundos ou layout. */
+html {
+  scrollbar-color: #f47721 #202326;
+  scrollbar-width: thin;
+}
+html::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+html::-webkit-scrollbar-track {
+  background: #202326;
+}
+html::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ffd400 0%, #f47721 100%);
+  border: 2px solid #202326;
+  border-radius: 999px;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: #ffd400;
+}
