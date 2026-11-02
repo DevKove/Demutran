@@ -1245,3 +1245,9 @@ body, #root, .app-shell { min-height: 100vh; min-height: 100dvh; }
   .main-area > .footer .footer-legal { gap:16px; flex-wrap:wrap; }
 }
 @media print { .main-area > .footer { display:none !important; } }
+
+
+/* Ação de encerramento da sessão no final do menu lateral. */
+.sidebar-bottom .logout-button{margin-top:10px;border:1px solid rgba(255,255,255,.12);color:#f0b4b4;background:rgba(190,55,55,.08)}
+.sidebar-bottom .logout-button:hover{background:rgba(190,55,55,.18);color:#fff;border-color:rgba(230,110,110,.35)}
+.sidebar-bottom .logout-button:focus-visible{outline-color:#e58a8a}
