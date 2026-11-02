@@ -5,8 +5,6 @@ const password = process.env.DEMUTRAN_ADMIN_PASSWORD
 const marker = () => `QA-AUTO-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`
 const today = () => new Date().toISOString().slice(0, 10)
 
-test.skip(!email || !password, 'Defina DEMUTRAN_ADMIN_EMAIL e DEMUTRAN_ADMIN_PASSWORD no ambiente.')
-
 async function login(page: Page) {
   await page.goto('/')
   await page.getByLabel(/E-mail institucional/i).fill(email!)
@@ -69,7 +67,10 @@ async function runCrudJourney(page: Page, module: string, uniqueField: string, v
 }
 
 test.describe('Jornada administrativa DEMUTRAN — CRUD real pela interface', () => {
-  test.beforeEach(async ({ page }) => login(page))
+  test.beforeEach(async ({ page }) => {
+    test.skip(!email || !password, 'Defina DEMUTRAN_ADMIN_EMAIL e DEMUTRAN_ADMIN_PASSWORD no ambiente.')
+    await login(page)
+  })
 
   test('Material: cadastrar, editar, consultar e excluir', async ({ page }) => {
     await runCrudJourney(page, 'Material', 'Material', 'Material de teste', [
