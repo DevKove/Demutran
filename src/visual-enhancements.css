@@ -1044,3 +1044,35 @@ html[data-contrast="true"] .global-search-module {
   .global-search-item-main strong { font-size:17px !important; }
   .global-search-item-main small { font-size:14px !important; }
 }
+
+
+/* Corrige a faixa clara após o rodapé: a área principal ocupa toda a viewport
+   e o conteúdo cresce quando a página tem poucos registros. */
+html,
+body,
+#root {
+  min-height: 100%;
+  background-color: #151719;
+}
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+#root,
+.app-shell {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.main-area {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.main-area > .page-content {
+  flex: 1 0 auto;
+  width: 100%;
+}
+@media (min-width: 851px) {
+  .main-area { min-height: 100vh; min-height: 100dvh; }
+}
