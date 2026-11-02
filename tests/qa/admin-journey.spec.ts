@@ -114,7 +114,9 @@ test.describe('Jornada administrativa DEMUTRAN — CRUD real pela interface', ()
     await openModule(page, 'Sinistro')
     await page.getByRole('button', { name: 'Novo cadastro', exact: true }).click()
     const server = await field(page, 'Matrícula do servidor')
-    if (await server.locator('option').count() < 2) test.skip(true, 'Não há servidor ativo com matrícula disponível para vincular ao sinistro de teste.')
+    const hasServer = await server.locator('option').count() >= 2
+    await page.getByRole('button', { name: 'Cancelar' }).click()
+    if (!hasServer) test.skip(true, 'Não há servidor ativo com matrícula disponível para vincular ao sinistro de teste.')
     await runCrudJourney(page, 'Sinistro', 'Local / endereço', 'Local QA', [
       { label: 'Data e hora da ocorrência', value: new Date().toISOString().slice(0, 16) },
       { label: 'Matrícula do servidor', select: true },
