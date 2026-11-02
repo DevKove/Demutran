@@ -857,3 +857,52 @@ select:focus-visible,textarea:focus-visible {
   .main-area:after { display: none; }
 }
 
+
+
+/* Fundo contínuo em documentos com rolagem: elimina áreas sem pintura no fim da página */
+html {
+  min-height: 100%;
+  background-color: #111315;
+  background-image:
+    radial-gradient(ellipse at 12% 8%, rgba(255,212,0,.20), transparent 28rem),
+    radial-gradient(ellipse at 88% 18%, rgba(244,119,33,.20), transparent 34rem),
+    linear-gradient(135deg,#101214 0%,#25282b 48%,#17191b 100%);
+  background-attachment: fixed;
+}
+body {
+  min-height: 100vh;
+  background: transparent !important;
+}
+#root,
+.app-shell,
+.main-area,
+.page-content {
+  background: transparent !important;
+}
+#root,
+.app-shell {
+  min-height: 100vh;
+}
+.main-area {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.main-area > .page-content {
+  box-sizing: border-box;
+  flex: 1 0 auto;
+  min-height: calc(100vh - 141px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main-area > .page-content > .footer {
+  margin-top: auto;
+  padding-bottom: 20px;
+  background: transparent !important;
+}
+@media (max-width: 850px) {
+  .main-area > .page-content {
+    min-height: calc(100vh - 65px);
+  }
+}
