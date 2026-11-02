@@ -759,3 +759,101 @@ body {
     min-height: calc(100vh - 65px);
   }
 }
+
+/* DEMUTRAN — identidade visual de trânsito: amarelo, preto e laranja */
+:root {
+  --dm-yellow: #ffd400;
+  --dm-orange: #f47721;
+  --dm-black: #111315;
+  --dm-asphalt: #202326;
+  --dm-traffic-line: rgba(255, 212, 0, .22);
+}
+body {
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(255,212,0,.20), transparent 28rem),
+    radial-gradient(ellipse at 88% 18%, rgba(244,119,33,.20), transparent 34rem),
+    linear-gradient(135deg,#101214 0%,#25282b 48%,#17191b 100%) fixed !important;
+  background-attachment: fixed !important;
+}
+.main-area {
+  background:
+    radial-gradient(ellipse at 8% 12%,rgba(255,212,0,.13),transparent 30rem),
+    radial-gradient(ellipse at 95% 6%,rgba(244,119,33,.17),transparent 34rem),
+    linear-gradient(145deg,rgba(22,24,26,.97),rgba(39,41,43,.95) 48%,rgba(17,19,21,.98)) fixed !important;
+}
+.desktop-nav {
+  background: linear-gradient(100deg,#101214,#292b2d 52%,#101214) !important;
+  border-bottom: 4px solid var(--dm-yellow) !important;
+}
+.sidebar {
+  background: linear-gradient(165deg,#111315 0%,#292b2d 55%,#151719 100%) !important;
+}
+.nav-item.active {
+  color: #171717 !important;
+  background: linear-gradient(110deg,var(--dm-yellow),#ffad26) !important;
+  box-shadow: 0 5px 16px rgba(255,180,0,.24);
+}
+.nav-item:hover { background: rgba(255,212,0,.14) !important; }
+.topbar {
+  background: rgba(17,19,21,.96) !important;
+  border-bottom: 1px solid rgba(255,212,0,.28) !important;
+}
+.desktop-nav, .topbar, .sidebar { color: #fff !important; }
+.welcome-banner {
+  border-left: 5px solid var(--dm-yellow) !important;
+  background-image: linear-gradient(110deg,rgba(17,19,21,.96),rgba(45,39,28,.92)) !important;
+}
+.metric-card:before,.module-action:before {
+  background: linear-gradient(90deg,var(--dm-yellow),var(--dm-orange) 65%,#242424) !important;
+}
+.metric-card:hover,.panel:hover,.module-action:hover,.settings-panel:hover,
+.reports-filters:hover,.reports-results:hover {
+  border-color: rgba(255,181,35,.95) !important;
+}
+.primary-button,.banner-button {
+  color: #171717 !important;
+  background: linear-gradient(110deg,var(--dm-yellow),#ffad26) !important;
+  border: 1px solid #e49b00 !important;
+  box-shadow: 0 5px 14px rgba(244,119,33,.22) !important;
+}
+.primary-button:hover,.banner-button:hover {
+  background: linear-gradient(110deg,#ffe45c,var(--dm-orange)) !important;
+  transform: translateY(-2px);
+}
+.text-action,.order-id { color: #a85a00 !important; }
+.form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus,
+.settings-form-grid input:focus,.settings-form-grid select:focus,
+.settings-form-grid textarea:focus,.reports-filter-grid input:focus,
+.reports-filter-grid select:focus {
+  border-color: #e87922 !important;
+  box-shadow: 0 0 0 3px rgba(255,190,0,.25) !important;
+}
+button:focus-visible,a:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible {
+  outline: 3px solid var(--dm-yellow) !important;
+  outline-offset: 3px;
+}
+.footer-legal a:hover { color: var(--dm-yellow) !important; }
+
+/* Faixas inspiradas na sinalização horizontal, sem competir com o conteúdo */
+.main-area:after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+  right: 18px;
+  top: 42%;
+  width: 4px;
+  height: 150px;
+  border-radius: 4px;
+  opacity: .28;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--dm-yellow) 0 18px,
+    transparent 18px 34px
+  );
+}
+@media (max-width: 850px) {
+  .main-area:after { display: none; }
+}
+
