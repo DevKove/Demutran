@@ -6,7 +6,7 @@ const marker = () => `QA-AUTO-${Date.now()}-${Math.random().toString(36).slice(2
 const today = () => new Date().toISOString().slice(0, 10)
 
 async function login(page: Page) {
-  await page.goto('/')
+  await page.goto('./')
   await page.getByLabel(/E-mail institucional/i).fill(email!)
   await page.getByLabel(/^Senha/i).fill(password!)
   await page.getByRole('button', { name: /^Entrar/i }).click()
