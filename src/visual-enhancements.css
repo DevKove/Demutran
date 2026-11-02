@@ -1286,3 +1286,38 @@ body, #root, .app-shell { min-height: 100vh; min-height: 100dvh; }
 .main-area>.topbar .breadcrumb{font-size:10px}
 .main-area>.topbar .breadcrumb strong{max-width:35vw;font-size:12px}
 }
+
+
+/* Perfil do usuário no topo do menu lateral mobile. */
+.sidebar-profile { display:none; }
+@media (max-width:850px) {
+  .sidebar-profile {
+    display:flex;
+    align-items:center;
+    gap:13px;
+    margin:18px 16px 20px;
+    padding:14px;
+    min-width:0;
+    border:1px solid rgba(255,212,0,.28);
+    border-radius:15px;
+    background:linear-gradient(120deg,rgba(255,255,255,.10),rgba(255,255,255,.045));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 5px 16px rgba(0,0,0,.16);
+  }
+  .sidebar-profile img,
+  .sidebar-profile > div:first-child {
+    flex:0 0 52px;
+    width:52px!important;
+    height:52px!important;
+    min-width:52px;
+    border:2px solid rgba(255,212,0,.85);
+    border-radius:50%;
+    box-shadow:0 0 0 3px rgba(255,255,255,.07),0 4px 12px rgba(0,0,0,.25);
+  }
+  .sidebar-profile-info { display:grid;gap:4px;min-width:0; }
+  .sidebar-profile-info strong {
+    overflow:hidden;color:#fff;font-size:14px;font-weight:800;
+    text-overflow:ellipsis;white-space:nowrap;
+  }
+  .sidebar-profile-info small { color:#d1dbe5;font-size:11px; }
+  .main-area>.topbar .topbar-user-center { display:none!important; }
+}
