@@ -1197,3 +1197,51 @@ body,
   .main-area > .page-content > .footer { display: none !important; }
   .main-area { padding-bottom: 0 !important; }
 }
+
+
+/* Rodapé institucional: fora da área animada, no fluxo do layout. */
+html, body, #root { min-height: 100%; }
+body, #root, .app-shell { min-height: 100vh; min-height: 100dvh; }
+.app-shell { display: flex; flex-direction: row; }
+.main-area {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0 !important;
+}
+.main-area > .page-content {
+  flex: 1 0 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.main-area > .footer {
+  position: static !important;
+  inset: auto !important;
+  z-index: auto;
+  display: flex !important;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+  min-height: 64px;
+  margin: auto 0 0 !important;
+  padding: 12px 24px !important;
+  border-top: 1px solid rgba(255,255,255,.14);
+  background: linear-gradient(110deg,#17191b 0%,#242729 55%,#17191b 100%) !important;
+  color: #e0e3e7 !important;
+  box-shadow: 0 -5px 18px rgba(0,0,0,.12);
+}
+.main-area > .footer .footer-legal { display:flex; align-items:center; justify-content:center; gap:22px; }
+.main-area > .footer .footer-legal a { color:#f1f3f5; text-decoration:underline; text-underline-offset:3px; }
+.main-area > .footer .footer-sync { display:flex; align-items:center; gap:7px; white-space:nowrap; }
+@media(max-width:700px) {
+  .main-area > .footer { flex-direction:column; justify-content:center; gap:8px; padding:12px !important; text-align:center; font-size:11px; }
+  .main-area > .footer .footer-legal { gap:16px; flex-wrap:wrap; }
+}
+@media print { .main-area > .footer { display:none !important; } }
