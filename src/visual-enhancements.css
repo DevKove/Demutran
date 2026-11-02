@@ -1142,3 +1142,58 @@ body,
   flex: 0 0 auto;
   width: 100%;
 }
+
+
+/* Rodapé institucional sempre ancorado à borda inferior da janela. */
+.main-area {
+  padding-bottom: 76px;
+}
+.main-area > .page-content > .footer {
+  position: fixed !important;
+  inset: auto 0 0 0 !important;
+  z-index: 40;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+  width: 100% !important;
+  min-height: 64px;
+  margin: 0 !important;
+  padding: 12px 24px !important;
+  border-top: 1px solid rgba(255,255,255,.14);
+  background: linear-gradient(110deg, #17191b 0%, #242729 55%, #17191b 100%);
+  color: #c4c8ce;
+  box-shadow: 0 -8px 24px rgba(0,0,0,.16);
+}
+.main-area > .page-content > .footer .footer-legal {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+}
+.main-area > .page-content > .footer .footer-legal a {
+  color: #e0e3e7;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.main-area > .page-content > .footer .footer-sync {
+  justify-self: end;
+  white-space: nowrap;
+}
+@media (max-width: 700px) {
+  .main-area { padding-bottom: 112px; }
+  .main-area > .page-content > .footer {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 7px;
+    min-height: 100px;
+    padding: 10px 12px !important;
+    text-align: center;
+    font-size: 10px;
+  }
+  .main-area > .page-content > .footer .footer-sync { justify-self: center; }
+  .main-area > .page-content > .footer .footer-legal { gap: 16px; }
+}
+@media print {
+  .main-area > .page-content > .footer { display: none !important; }
+  .main-area { padding-bottom: 0 !important; }
+}
