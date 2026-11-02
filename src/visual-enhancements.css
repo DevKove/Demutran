@@ -1104,3 +1104,41 @@ body,
   min-height: 100vh;
   min-height: 100dvh;
 }
+
+
+/* Rodapé ancorado ao fim da viewport em páginas curtas.
+   Em páginas longas, permanece após o conteúdo e acompanha a rolagem. */
+html,
+body,
+#root {
+  min-height: 100%;
+}
+body,
+#root,
+.app-shell {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.app-shell {
+  display: flex;
+  flex-direction: row;
+}
+.main-area {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+.main-area > .page-content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.main-area > .page-content > .footer {
+  margin-top: auto;
+  flex: 0 0 auto;
+  width: 100%;
+}
