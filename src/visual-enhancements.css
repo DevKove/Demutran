@@ -967,3 +967,266 @@ html::-webkit-scrollbar-thumb:hover {
 
 /* Pesquisa global: resultados unificados entre módulos */
 .global-search-results{margin:0 0 24px;padding:clamp(18px,2.5vw,28px);animation:global-search-in .22s ease both}.global-search-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}.global-search-heading h2{margin:0;color:#fff;font-size:clamp(18px,2vw,23px)}.global-search-heading p{margin:6px 0 0;color:#d4dbe2;font-size:13px}.global-search-list{display:grid;gap:10px}.global-search-item{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px 17px;border:1px solid rgba(255,255,255,.15);border-radius:13px;background:rgba(255,255,255,.07);transition:border-color .18s ease,background .18s ease,transform .18s ease}.global-search-item:hover{border-color:rgba(255,212,0,.65);background:rgba(255,255,255,.11);transform:translateY(-2px)}.global-search-item-main{display:grid;gap:5px;min-width:0}.global-search-module{width:max-content;max-width:100%;padding:3px 8px;border-radius:20px;background:rgba(255,212,0,.16);color:#ffd400;font-size:10px;font-weight:800;letter-spacing:.04em}.global-search-item-main strong{color:#fff;font-size:14px;overflow-wrap:anywhere}.global-search-item-main small{color:#cbd3dc;font-size:11px;overflow-wrap:anywhere}.global-search-item .primary-button{flex:0 0 auto;white-space:nowrap}@keyframes global-search-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}@media(max-width:620px){.global-search-heading,.global-search-item{align-items:stretch;flex-direction:column}.global-search-heading .secondary-button,.global-search-item .primary-button{width:100%;justify-content:center}.global-search-item{gap:12px}}@media(prefers-reduced-motion:reduce){.global-search-results{animation:none}.global-search-item{transition:none}}
+
+
+/* Acessibilidade global: tipografia ampliada e contraste reforçado */
+:root {
+  --muted: #596273;
+  --dm-text-muted: #596273;
+  --dm-text-soft: #626b79;
+}
+body, input, select, textarea, button {
+  font-family: 'DM Sans', sans-serif;
+}
+body { color: #20242b; font-size: 16px; }
+.page-heading p,
+.module-intro p,
+.module-toolbar p,
+.records-heading p,
+.panel-heading p,
+.empty-state p,
+.dashboard-empty,
+.summary-stat,
+.settings-title p,
+.setting-row p,
+.setting-toggle small,
+.storage-summary span,
+.notification-popover p,
+.notification-popover strong,
+.inline-notice,
+.global-search-heading p,
+.global-search-item-main small,
+.record-modal .modal-heading p,
+.detail-grid dd {
+  font-size: 14px !important;
+}
+.eyebrow,
+.sidebar-label,
+.brand small,
+.sidebar-version,
+.help-card p,
+.breadcrumb,
+.heading-date,
+.profile-info small,
+.topbar-user-name small,
+.metric-bottom small,
+.panel-heading p,
+.records-heading p,
+.record-field span,
+.detail-grid dt,
+.setting-preview span,
+.setting-preview p,
+.damage-image-upload small,
+.damage-image-upload input,
+.signature-pad-footer small,
+.auth-brand small,
+.auth-kicker,
+.auth-security,
+.auth-footer {
+  font-size: 12px !important;
+}
+.nav-item,
+.desktop-nav-item,
+.search-box input,
+.search-box kbd,
+.profile-info strong,
+.topbar-user-name strong,
+.module-action strong,
+.records-heading h3,
+.panel-heading h3,
+.activity-panel h3,
+.form-grid label,
+.form-grid label span,
+.detail-grid dd,
+.setting-row strong,
+.setting-toggle strong,
+.settings-actions button,
+.row-actions button,
+.text-action,
+.shortcut-actions button,
+.notification-popover strong {
+  font-size: 14px !important;
+}
+.metric-bottom span,
+.shortcut-card strong,
+.notice-card strong,
+.shortcut-card p,
+.notice-card p,
+.summary-stat,
+.operation-row,
+.operation-row strong,
+td,
+td strong,
+td small,
+th,
+.records-table td,
+.records-table th,
+.status,
+.priority {
+  font-size: 13px !important;
+}
+.form-grid input,
+.form-grid select,
+.form-grid textarea,
+.setting-row select,
+.auth-input input,
+.search-box input,
+.global-search-item-main strong {
+  font-size: 15px !important;
+}
+.form-grid label,
+.form-grid label span,
+.record-field span,
+.detail-grid dt,
+.setting-row p,
+.setting-toggle small,
+.settings-title p,
+.module-intro p,
+.module-toolbar p,
+.records-heading p,
+.page-heading p,
+.empty-state p,
+.dashboard-empty,
+.summary-stat,
+td,
+td small,
+.global-search-item-main small,
+.help-card p,
+.sidebar-label,
+.sidebar-version,
+.brand small,
+.profile-info small,
+.topbar-user-name small,
+.metric-bottom small,
+.panel-heading p,
+.setting-preview span,
+.setting-preview p,
+.storage-summary span,
+.signature-pad-footer small,
+.damage-image-upload small,
+.footer {
+  color: #535d6b !important;
+}
+.form-grid input,
+.form-grid select,
+.form-grid textarea,
+.setting-row select,
+.auth-input,
+.search-box,
+.global-search-results,
+.records-panel,
+.record-modal .detail-grid > div {
+  border-color: #c5cbd4;
+}
+.form-grid input,
+.form-grid select,
+.form-grid textarea,
+.setting-row select,
+.auth-input input,
+.search-box input {
+  color: #202631 !important;
+  background-color: #fff;
+}
+.form-grid input::placeholder,
+.form-grid textarea::placeholder,
+.search-box input::placeholder,
+.auth-input input::placeholder {
+  color: #687385 !important;
+  opacity: 1;
+}
+.form-grid select option,
+.setting-row select option {
+  color: #202631;
+  background: #fff;
+}
+.form-grid input:disabled,
+.form-grid select:disabled,
+.form-grid textarea:disabled,
+button:disabled {
+  color: #596273;
+  opacity: .78;
+}
+.record-field span,
+.detail-grid dt {
+  color: #535d6b !important;
+}
+.record-field strong,
+.detail-grid dd,
+td strong,
+.summary-stat strong {
+  color: #202631 !important;
+}
+th,
+.records-table th {
+  color: #fff !important;
+  font-size: 12px !important;
+}
+td,
+.records-table td {
+  color: #424b58 !important;
+}
+.status-em-execução { color: #765900 !important; }
+.status-aguardando { color: #8a3f12 !important; }
+.status-concluída { color: #17633b !important; }
+.priority-urgente,
+.priority-alta { color: #9f2424 !important; }
+.priority-média { color: #765900 !important; }
+.priority-baixa { color: #17633b !important; }
+.nav-item:not(.active) { color: #d0d4da !important; }
+.sidebar-label,
+.brand small,
+.sidebar-version { color: #c0c5cd !important; }
+.help-card p { color: #c8cdd5 !important; }
+.desktop-nav-item:not(.active) { color: #e0e3e8 !important; }
+.topbar .breadcrumb,
+.topbar .search-box { color: #4d5664; }
+.topbar .search-box input { color: #202631 !important; }
+.topbar .search-box input::placeholder { color: #687385 !important; }
+.footer { color: #535d6b !important; }
+.auth-description,
+.auth-card p,
+.auth-switch,
+.auth-security,
+.auth-footer { color: #535d6b !important; }
+.auth-card label,
+.auth-consent { color: #344054 !important; }
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #9a7100 !important;
+  outline-offset: 2px;
+}
+@media (max-width: 600px) {
+  .page-heading p,
+  .module-intro p,
+  .module-toolbar p,
+  .records-heading p,
+  .empty-state p,
+  .record-field span,
+  .detail-grid dt,
+  .form-grid label,
+  .form-grid label span,
+  .form-grid input,
+  .form-grid select,
+  .form-grid textarea,
+  td,
+  td strong,
+  .summary-stat {
+    font-size: 14px !important;
+  }
+  .eyebrow,
+  .sidebar-label,
+  .metric-bottom small,
+  .footer {
+    font-size: 12px !important;
+  }
+}
+@media (prefers-contrast: more) {
+  :root { --muted: #424b58; --dm-text-muted: #424b58; }
+  .form-grid input,
+  .form-grid select,
+  .form-grid textarea,
+  .setting-row select { border-color: #727b88; }
+}
