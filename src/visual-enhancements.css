@@ -954,3 +954,13 @@ html::-webkit-scrollbar-thumb:hover {
   .topbar .search-box input { font-size: 10px; }
   .topbar-actions { gap: 3px; }
 }
+
+.topbar .search-box .search-submit {
+  display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;padding:0;
+  border:1px solid rgba(255,212,0,.42);border-radius:50%;color:#17191b;
+  background:linear-gradient(135deg,#ffd400,#f47721);box-shadow:0 2px 8px rgba(0,0,0,.2);
+  transition:transform .18s ease,filter .18s ease,box-shadow .18s ease;
+}
+.topbar .search-box .search-submit:hover {filter:brightness(1.08);transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.topbar .search-box .search-submit:focus-visible {outline:2px solid #fff;outline-offset:2px}
+@media(max-width:560px){.topbar .search-box .search-submit{flex-basis:27px;width:27px;height:27px}}
