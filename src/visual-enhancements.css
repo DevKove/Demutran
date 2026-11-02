@@ -1076,3 +1076,31 @@ body {
 @media (min-width: 851px) {
   .main-area { min-height: 100vh; min-height: 100dvh; }
 }
+
+
+/* Fundo contínuo abaixo do conteúdo: cobre também a área do documento
+   que fica além da altura natural do .app-shell. */
+html,
+body,
+#root {
+  background-color: #17191b !important;
+}
+html,
+body {
+  min-height: 100%;
+}
+body,
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+#root {
+  background:
+    radial-gradient(ellipse at 32% 88%, rgba(46, 83, 105, .24), transparent 18rem),
+    linear-gradient(145deg, #17191b 0%, #242729 52%, #17191b 100%) !important;
+}
+.app-shell,
+.main-area {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
