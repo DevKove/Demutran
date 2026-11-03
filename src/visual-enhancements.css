@@ -1882,9 +1882,9 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
   box-shadow:0 2px 5px rgba(22,131,74,.18);
 }
 .row-actions .authorization-approve-button:hover:not(:disabled) {
-  color:#fff;
-  border-color:#116b3b;
-  background:#116b3b;
+  color:#fff !important;
+  border-color:#116b3b !important;
+  background:#116b3b !important;
   transform:translateY(-1px);
 }
 .row-actions .authorization-reject-button {
@@ -1894,9 +1894,9 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
   box-shadow:0 2px 5px rgba(201,54,54,.16);
 }
 .row-actions .authorization-reject-button:hover:not(:disabled) {
-  color:#fff;
-  border-color:#a92727;
-  background:#a92727;
+  color:#fff !important;
+  border-color:#a92727 !important;
+  background:#a92727 !important;
   transform:translateY(-1px);
 }
 .row-actions .authorization-approve-button:disabled,
@@ -1926,9 +1926,9 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
   justify-content:center;
 }
 .row-actions .authorization-actions .authorization-approve-button {
-  color:#fff;
-  border:1px solid #16834a;
-  background:#16834a;
+  color:#fff !important;
+  border:1px solid #16834a !important;
+  background:#16834a !important;
 }
 .row-actions .authorization-actions .authorization-approve-button:hover:not(:disabled) {
   color:#fff;
@@ -1936,9 +1936,9 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
   background:#116b3b;
 }
 .row-actions .authorization-actions .authorization-reject-button {
-  color:#fff;
-  border:1px solid #c93636;
-  background:#c93636;
+  color:#fff !important;
+  border:1px solid #c93636 !important;
+  background:#c93636 !important;
 }
 .row-actions .authorization-actions .authorization-reject-button:hover:not(:disabled) {
   color:#fff;
