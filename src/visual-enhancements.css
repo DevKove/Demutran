@@ -1613,3 +1613,41 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
   .sidebar .help-card { display: none !important; }
   .sidebar .nav-list .nav-item { width: 100%; }
 }
+
+
+/* Cabeçalho desktop: manter nome do usuário visível ao lado da foto. */
+@media (min-width: 851px) {
+  .main-area > .topbar .topbar-user-center {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    max-width: min(42%, 460px);
+    visibility: visible;
+    opacity: 1;
+  }
+  .main-area > .topbar .topbar-user-name {
+    display: block !important;
+    min-width: 0;
+    max-width: 280px;
+    overflow: hidden;
+    text-align: left;
+  }
+  .main-area > .topbar .topbar-user-name strong {
+    display: block;
+    overflow: hidden;
+    color: #fff !important;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .main-area > .topbar .topbar-user-name small {
+    display: block;
+    margin-top: 2px;
+    color: #d1dbe5 !important;
+    font-size: 11px;
+    line-height: 1.3;
+  }
+}
