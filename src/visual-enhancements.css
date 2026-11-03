@@ -1651,3 +1651,45 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
     line-height: 1.3;
   }
 }
+
+
+/* Cabeçalho desktop claro: corrigir contraste do nome do usuário. */
+@media (min-width: 851px) {
+  .main-area > .topbar .topbar-user-center {
+    display: flex !important;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: max-content;
+    max-width: min(42%, 460px);
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  .main-area > .topbar .topbar-user-name {
+    display: block !important;
+    min-width: 0;
+    max-width: 280px;
+    overflow: visible;
+    text-align: left;
+  }
+  .main-area > .topbar .topbar-user-name strong {
+    display: block !important;
+    color: #19344d !important;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .main-area > .topbar .topbar-user-name small {
+    display: block !important;
+    margin-top: 2px;
+    color: #526579 !important;
+    font-size: 11px;
+    line-height: 1.3;
+  }
+}
