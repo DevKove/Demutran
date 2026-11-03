@@ -1842,3 +1842,18 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
   .authorization-count,.authorization-login-alert,.authorization-pending-card,
   .authorization-pending-card::before { animation:none !important; }
 }
+
+.authorization-pending-label {
+  grid-column:1/-1;
+  width:max-content;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:5px 9px;
+  border:1px solid #e3cf98;
+  border-radius:999px;
+  color:#765713;
+  background:#fff8e5;
+  font-size:11px;
+  font-weight:750;
+}
