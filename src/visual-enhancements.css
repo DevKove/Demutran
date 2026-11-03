@@ -1857,3 +1857,42 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
   font-size:11px;
   font-weight:750;
 }
+
+
+/* Ações administrativas para solicitações de acesso pendentes. */
+.authorization-approve-button,
+.authorization-reject-button {
+  min-height:34px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:7px 11px;
+  border:1px solid transparent;
+  border-radius:7px;
+  font-size:12px;
+  font-weight:750;
+  cursor:pointer;
+  transition:background .16s ease,border-color .16s ease,transform .16s ease;
+}
+.authorization-approve-button {
+  color:#17613b;
+  border-color:#b8ddc8;
+  background:#edf8f1;
+}
+.authorization-approve-button:hover:not(:disabled) { background:#dff1e6;transform:translateY(-1px); }
+.authorization-reject-button {
+  color:#9f2929;
+  border-color:#edc2c2;
+  background:#fff1f1;
+}
+.authorization-reject-button:hover:not(:disabled) { background:#ffe4e4;transform:translateY(-1px); }
+.authorization-approve-button:disabled,
+.authorization-reject-button:disabled { opacity:.55;cursor:wait; }
+@media(max-width:560px) {
+  .row-actions .authorization-approve-button,
+  .row-actions .authorization-reject-button { flex:1 1 auto; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .authorization-approve-button,.authorization-reject-button { transition:none; }
+}
