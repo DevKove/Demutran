@@ -1956,3 +1956,27 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
 .row-actions .user-access-button:disabled { opacity:.55;cursor:wait; }
 @media(max-width:560px) { .row-actions .user-access-button { flex:1 1 auto; } }
 @media(prefers-reduced-motion:reduce) { .row-actions .user-access-button { transition:none; } }
+
+
+/* Botões administrativos de bloqueio: formato retangular com texto integral. */
+.row-actions .user-access-button {
+  width:auto !important;
+  min-width:124px;
+  min-height:36px;
+  height:auto !important;
+  flex:0 0 auto;
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:8px 13px !important;
+  white-space:nowrap;
+  line-height:1.2;
+  border-radius:7px;
+}
+@media(max-width:560px) {
+  .row-actions .user-access-button {
+    min-width:124px;
+    flex:0 0 auto;
+  }
+}
