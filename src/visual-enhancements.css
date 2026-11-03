@@ -1909,3 +1909,39 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
   .row-actions .authorization-approve-button,
   .row-actions .authorization-reject-button { transition:none; }
 }
+
+
+/* Ações de autorização empilhadas nos cartões de novos usuários. */
+.row-actions .authorization-actions {
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:6px;
+  min-width:104px;
+}
+.row-actions .authorization-actions .authorization-approve-button,
+.row-actions .authorization-actions .authorization-reject-button {
+  width:100%;
+  min-height:34px;
+  justify-content:center;
+}
+.row-actions .authorization-actions .authorization-approve-button {
+  color:#fff;
+  border:1px solid #16834a;
+  background:#16834a;
+}
+.row-actions .authorization-actions .authorization-approve-button:hover:not(:disabled) {
+  color:#fff;
+  border-color:#116b3b;
+  background:#116b3b;
+}
+.row-actions .authorization-actions .authorization-reject-button {
+  color:#fff;
+  border:1px solid #c93636;
+  background:#c93636;
+}
+.row-actions .authorization-actions .authorization-reject-button:hover:not(:disabled) {
+  color:#fff;
+  border-color:#a92727;
+  background:#a92727;
+}
