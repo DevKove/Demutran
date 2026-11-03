@@ -1860,8 +1860,8 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
 
 
 /* Ações administrativas para solicitações de acesso pendentes. */
-.authorization-approve-button,
-.authorization-reject-button {
+.row-actions .authorization-approve-button,
+.row-actions .row-actions .authorization-reject-button {
   min-height:34px;
   display:inline-flex;
   align-items:center;
@@ -1875,13 +1875,13 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
   cursor:pointer;
   transition:background .16s ease,border-color .16s ease,transform .16s ease;
 }
-.authorization-approve-button {
+.row-actions .authorization-approve-button {
   color:#fff;
   border-color:#16834a;
   background:#16834a;
   box-shadow:0 2px 5px rgba(22,131,74,.18);
 }
-.authorization-approve-button:hover:not(:disabled) {
+.row-actions .authorization-approve-button:hover:not(:disabled) {
   color:#fff;
   border-color:#116b3b;
   background:#116b3b;
@@ -1893,7 +1893,7 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
   background:#c93636;
   box-shadow:0 2px 5px rgba(201,54,54,.16);
 }
-.authorization-reject-button:hover:not(:disabled) {
+.row-actions .authorization-reject-button:hover:not(:disabled) {
   color:#fff;
   border-color:#a92727;
   background:#a92727;
