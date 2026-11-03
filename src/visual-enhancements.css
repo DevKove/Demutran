@@ -1876,17 +1876,29 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
   transition:background .16s ease,border-color .16s ease,transform .16s ease;
 }
 .authorization-approve-button {
-  color:#17613b;
-  border-color:#b8ddc8;
-  background:#edf8f1;
+  color:#fff;
+  border-color:#16834a;
+  background:#16834a;
+  box-shadow:0 2px 5px rgba(22,131,74,.18);
 }
-.authorization-approve-button:hover:not(:disabled) { background:#dff1e6;transform:translateY(-1px); }
+.authorization-approve-button:hover:not(:disabled) {
+  color:#fff;
+  border-color:#116b3b;
+  background:#116b3b;
+  transform:translateY(-1px);
+}
 .authorization-reject-button {
-  color:#9f2929;
-  border-color:#edc2c2;
-  background:#fff1f1;
+  color:#fff;
+  border-color:#c93636;
+  background:#c93636;
+  box-shadow:0 2px 5px rgba(201,54,54,.16);
 }
-.authorization-reject-button:hover:not(:disabled) { background:#ffe4e4;transform:translateY(-1px); }
+.authorization-reject-button:hover:not(:disabled) {
+  color:#fff;
+  border-color:#a92727;
+  background:#a92727;
+  transform:translateY(-1px);
+}
 .authorization-approve-button:disabled,
 .authorization-reject-button:disabled { opacity:.55;cursor:wait; }
 @media(max-width:560px) {
