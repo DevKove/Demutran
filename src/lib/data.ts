@@ -33,6 +33,8 @@ export function fromDatabase(module: string, raw: Record<string, unknown>): UiRo
         cargo: raw.job_title || '', avatar_url: raw.avatar_url || '',
         perfil: roleToLabel[String(raw.role)] || 'Consulta',
         status: statusToLabel[String(raw.status)] || 'Pendente',
+        acesso: statusToLabel[String(raw.status)] || 'Pendente',
+        situacao: String(raw.employment_status || 'Ativo'),
       }
     : raw
   const normalized = Object.fromEntries(Object.entries(values).map(([key,value]) => [key, value == null ? '' : String(value)]))
@@ -44,7 +46,7 @@ export function toDatabase(module: string, form: Record<string,string>): Record<
     return {
       full_name: form.nome, matricula: form.matricula || '', phone: form.telefone || '', job_title: form.cargo || '',
       role: labelToRole[form.perfil] || 'consulta',
-      status: labelToStatus[form.status] || 'pending',
+      employment_status: ['Ativo','Afastado','Inativo'].includes(form.situacao) ? form.situacao : 'Ativo',
     }
   }
   const allowed: Record<string,string[]> = {

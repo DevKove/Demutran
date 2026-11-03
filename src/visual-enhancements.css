@@ -1945,3 +1945,14 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
   border-color:#a92727;
   background:#a92727;
 }
+
+
+/* Controle independente de bloqueio de acesso dos usuários. */
+.row-actions .user-access-button { min-height:34px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:7px 11px;border:1px solid transparent;border-radius:7px;color:#fff;font-size:12px;font-weight:750;cursor:pointer;transition:background .16s ease,border-color .16s ease,transform .16s ease; }
+.row-actions .user-access-lock { color:#fff !important;border-color:#b83232 !important;background:#b83232 !important; }
+.row-actions .user-access-lock:hover:not(:disabled) { color:#fff !important;border-color:#982626 !important;background:#982626 !important;transform:translateY(-1px); }
+.row-actions .user-access-unlock { color:#fff !important;border-color:#16834a !important;background:#16834a !important; }
+.row-actions .user-access-unlock:hover:not(:disabled) { color:#fff !important;border-color:#116b3b !important;background:#116b3b !important;transform:translateY(-1px); }
+.row-actions .user-access-button:disabled { opacity:.55;cursor:wait; }
+@media(max-width:560px) { .row-actions .user-access-button { flex:1 1 auto; } }
+@media(prefers-reduced-motion:reduce) { .row-actions .user-access-button { transition:none; } }
