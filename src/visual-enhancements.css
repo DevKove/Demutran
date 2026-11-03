@@ -1605,3 +1605,11 @@ html[data-contrast="true"] .main-area>.footer { background:#000 !important; }
 html[data-contrast="true"] .nav-item.active,
 html[data-contrast="true"] .desktop-nav-item.active,
 html[data-contrast="true"] .primary-button { color:#000 !important;background:#ffdf40 !important; }
+
+
+/* Menu lateral mobile: remove o aviso operacional e mantém Definições
+   alinhado aos demais itens de navegação. */
+@media (max-width: 850px) {
+  .sidebar .help-card { display: none !important; }
+  .sidebar .nav-list .nav-item { width: 100%; }
+}
