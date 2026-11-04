@@ -2156,3 +2156,23 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
   }
   .desktop-nav-brand strong span { color: #d9bd72; }
 }
+
+
+/* Brasão institucional sem moldura ou fundo decorativo. */
+.brand-mark,
+.desktop-nav-brand-mark {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.brand-mark img,
+.desktop-nav-brand-mark img {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  object-fit: contain !important;
+}
+@media (min-width: 851px) {
+  .desktop-nav-brand-mark { overflow: visible !important; }
+}
