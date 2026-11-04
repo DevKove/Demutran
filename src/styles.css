@@ -327,97 +327,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 }
 
 
-/* O rodapé mobile utiliza os mesmos itens visuais da navegação lateral. */
-@media (max-width: 850px) {
-  .sidebar {
-    height: 100vh;
-    height: 100dvh;
-    overflow: hidden;
-    padding-bottom: max(12px, env(safe-area-inset-bottom));
-  }
-
-  .nav-list {
-    flex: 1 1 auto;
-    min-height: 0;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scrollbar-width: thin;
-    scrollbar-color: #555 #191a1c;
-    padding-bottom: 8px;
-  }
-
-  .sidebar-bottom {
-    position: relative;
-    bottom: auto;
-    display: flex;
-    flex: 0 0 auto;
-    flex-direction: column;
-    gap: 5px;
-    margin-top: auto;
-    padding: 10px 0 0;
-    background: #191a1c;
-    border-top: 1px solid #ffffff18;
-  }
-
-  .sidebar-bottom .help-card {
-    margin-bottom: 8px;
-  }
-
-  .sidebar-version {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    width: 100%;
-    min-height: 46px;
-    margin: 0;
-    padding: 12px 13px;
-    border: 0;
-    border-radius: 9px;
-    color: #aeb0b5;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0;
-  }
-
-  .sidebar-version::before {
-    content: "";
-    display: block;
-    flex: 0 0 20px;
-    width: 20px;
-  }
-
-  .sidebar-version span {
-    margin-left: auto;
-    color: #858994;
-    font-size: 12px;
-    font-weight: 500;
-  }
-
-  .sidebar-bottom .logout-button {
-    position: static;
-    bottom: auto;
-    z-index: auto;
-    display: flex !important;
-    width: 100%;
-    min-height: 46px;
-    margin: 0 !important;
-    padding: 12px 13px;
-    border: 0;
-    border-radius: 9px;
-    background: transparent;
-    color: #aeb0b5;
-    box-shadow: none;
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  .sidebar-bottom .logout-button:hover,
-  .sidebar-version:hover {
-    background: #ffffff0b;
-    color: #fff;
-  }
-}
-
 /* Desktop: rolagem horizontal exclusiva do menu principal e sem overflow lateral global. */
 @media (min-width: 851px) {
   html, body, #root, .app-shell {
@@ -527,7 +436,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 }
 
 
-/* Mobile: navegação rola de forma independente; versão e saída permanecem no rodapé. */
+/* Mobile: rodapé padronizado com a mesma geometria dos itens do menu. */
 @media (max-width: 850px) {
   .sidebar {
     height: 100vh;
@@ -549,7 +458,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .sidebar-bottom {
     position: relative;
     bottom: auto;
+    display: flex;
     flex: 0 0 auto;
+    flex-direction: column;
+    gap: 5px;
     margin-top: auto;
     padding: 10px 0 0;
     background: #191a1c;
@@ -557,29 +469,43 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   }
 
   .sidebar-bottom .help-card {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .sidebar-version {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    margin: 0 0 6px;
-    padding: 8px 13px;
+    gap: 13px;
+    width: 100%;
+    min-height: 46px;
+    margin: 0;
+    padding: 12px 13px;
     border: 0;
+    border-radius: 9px;
     color: #aeb0b5;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 600;
     letter-spacing: 0;
   }
 
+  .sidebar-version::before {
+    content: "";
+    display: block;
+    flex: 0 0 20px;
+    width: 20px;
+  }
+
   .sidebar-version span {
-    float: none;
+    margin-left: auto;
     color: #858994;
+    font-size: 12px;
+    font-weight: 500;
   }
 
   .sidebar-bottom .logout-button {
     position: static;
+    bottom: auto;
+    z-index: auto;
     display: flex !important;
     align-items: center;
     width: 100%;
@@ -595,7 +521,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
     font-weight: 600;
   }
 
-  .sidebar-bottom .logout-button:hover {
+  .sidebar-bottom .logout-button:hover,
+  .sidebar-version:hover {
     background: #ffffff0b;
     color: #fff;
   }
