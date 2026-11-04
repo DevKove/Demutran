@@ -2220,3 +2220,47 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
     background: transparent !important;
   }
 }
+
+
+/* Mobile: impedir transbordamento horizontal da página sem bloquear
+   áreas que possuem rolagem própria (tabelas e conteúdo extenso). */
+@media (max-width: 850px) {
+  html,
+  body,
+  #root,
+  .app-shell {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .main-area,
+  .page-content {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .page-content > *,
+  .page-content .module-layout,
+  .page-content .reports-layout,
+  .page-content .settings-layout,
+  .page-content .dashboard-grid,
+  .page-content .metrics-grid,
+  .page-content .bottom-grid {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .page-content img,
+  .page-content video,
+  .page-content canvas,
+  .page-content iframe {
+    max-width: 100%;
+  }
+
+  .page-content pre,
+  .page-content code {
+    overflow-wrap: anywhere;
+  }
+}
