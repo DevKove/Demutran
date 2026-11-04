@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from 'react'
 import { ArrowRight, LockKeyhole, Mail, TrafficCone, UserPlus } from 'lucide-react'
 import { supabase } from '../lib/supabase'
+import demutranEmblem from '../../IMG/Demutran.png'
 
 type Props = { children: ReactNode }
 type Profile = { id:string; full_name:string; email:string; role:string; status:string }
@@ -65,10 +66,10 @@ export default function AuthGate({children}:Props) {
   const signOut=async()=>{setBusy(true);await supabase.auth.signOut();setSession(null);setProfile(null);setBusy(false)}
   if(loading)return <div className="auth-loading">Validando acesso seguro...</div>
   if(session&&profile?.status==='active')return <>{children}</>
-  if(session)return <main className="auth-screen"><section className="auth-card"><div className="auth-logo"><TrafficCone size={28}/></div><h1>{profile?.status==='blocked'?'Acesso bloqueado':'Aguardando aprovação'}</h1><p>{profile?.status==='blocked'?'Esta conta está desativada. Contate o administrador.':'Seu cadastro foi recebido. Um administrador precisa aprovar seu acesso ao DEMUTRAN.'}</p><button className="auth-submit" onClick={signOut} disabled={busy}>Sair da conta</button></section></main>
+  if(session)return <main className="auth-screen"><section className="auth-card"><div className="auth-logo"><img src={demutranEmblem} alt="Brasão do DEMUTRAN" /></div><h1>{profile?.status==='blocked'?'Acesso bloqueado':'Aguardando aprovação'}</h1><p>{profile?.status==='blocked'?'Esta conta está desativada. Contate o administrador.':'Seu cadastro foi recebido. Um administrador precisa aprovar seu acesso ao DEMUTRAN.'}</p><button className="auth-submit" onClick={signOut} disabled={busy}>Sair da conta</button></section></main>
 
   return <main className="auth-screen"><section className="auth-card">
-    <div className="auth-brand"><div className="auth-logo"><TrafficCone size={28}/></div><div><strong>DEMU<span>TRAN</span></strong><small>GESTÃO MUNICIPAL DE TRÂNSITO</small></div></div>
+    <div className="auth-brand"><div className="auth-logo"><img src={demutranEmblem} alt="Brasão do DEMUTRAN" /></div><div><strong>DEMU<span>TRAN</span></strong><small>GESTÃO MUNICIPAL DE TRÂNSITO</small></div></div>
     <span className="auth-kicker">AMBIENTE RESTRITO</span>
     <h1>{mode==='login'?'Acesso ao sistema':mode==='signup'?'Solicitar acesso':'Recuperar senha'}</h1>
     <p className="auth-description">{mode==='login'?'Entre com suas credenciais institucionais.':mode==='signup'?'Crie seu cadastro. O acesso depende da aprovação do administrador.':'Informe seu e-mail para receber as instruções.'}</p>
