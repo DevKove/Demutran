@@ -440,3 +440,78 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
     .desktop-nav { scroll-behavior: auto; }
   }
 }
+
+
+/* Mobile: navegação rola de forma independente; versão e saída permanecem no rodapé. */
+@media (max-width: 850px) {
+  .sidebar {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  .nav-list {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #555 #191a1c;
+    padding-bottom: 8px;
+  }
+
+  .sidebar-bottom {
+    position: relative;
+    bottom: auto;
+    flex: 0 0 auto;
+    margin-top: auto;
+    padding: 10px 0 0;
+    background: #191a1c;
+    border-top: 1px solid #ffffff18;
+  }
+
+  .sidebar-bottom .help-card {
+    margin-bottom: 10px;
+  }
+
+  .sidebar-version {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 0 0 6px;
+    padding: 8px 13px;
+    border: 0;
+    color: #aeb0b5;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+
+  .sidebar-version span {
+    float: none;
+    color: #858994;
+  }
+
+  .sidebar-bottom .logout-button {
+    position: static;
+    display: flex !important;
+    align-items: center;
+    width: 100%;
+    min-height: 46px;
+    margin: 0 !important;
+    padding: 12px 13px;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: #aeb0b5;
+    box-shadow: none;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .sidebar-bottom .logout-button:hover {
+    background: #ffffff0b;
+    color: #fff;
+  }
+}
