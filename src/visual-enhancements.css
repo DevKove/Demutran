@@ -1980,3 +1980,74 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
     flex:0 0 auto;
   }
 }
+
+
+/* Mobile sidebar footer: final visual contract, after all legacy overrides. */
+@media (max-width: 850px) {
+  .sidebar .sidebar-bottom .sidebar-version,
+  .sidebar .sidebar-bottom > .logout-button {
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 13px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 46px !important;
+    margin: 0 !important;
+    padding: 12px 13px !important;
+    border: 1px solid transparent !important;
+    border-radius: 9px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #e0e8ef !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    font-style: normal !important;
+    line-height: 20px !important;
+    letter-spacing: 0 !important;
+    text-align: left !important;
+    text-transform: none !important;
+    text-decoration: none !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+  }
+
+  .sidebar .sidebar-bottom .sidebar-version::before {
+    content: "" !important;
+    display: block !important;
+    flex: 0 0 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .sidebar .sidebar-bottom .sidebar-version > span {
+    display: inline-block !important;
+    margin-left: auto !important;
+    color: #b7c5d2 !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 18px !important;
+    letter-spacing: 0 !important;
+  }
+
+  .sidebar .sidebar-bottom > .logout-button {
+    position: static !important;
+    inset: auto !important;
+    justify-content: flex-start !important;
+    cursor: pointer !important;
+  }
+
+  .sidebar .sidebar-bottom .sidebar-version:hover,
+  .sidebar .sidebar-bottom > .logout-button:hover {
+    border-color: rgba(255,255,255,.10) !important;
+    background: rgba(255,255,255,.08) !important;
+    color: #fff !important;
+  }
+
+  .sidebar .sidebar-bottom > .logout-button:focus-visible {
+    outline: 2px solid #d2b56b !important;
+    outline-offset: 2px !important;
+  }
+}
