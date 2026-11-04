@@ -4,6 +4,7 @@ import App from './App'
 import './styles.css'
 import './visual-enhancements.css'
 import './auth.css'
+import './pwa'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode><App /></React.StrictMode>,
