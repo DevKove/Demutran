@@ -2176,3 +2176,27 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
 @media (min-width: 851px) {
   .desktop-nav-brand-mark { overflow: visible !important; }
 }
+
+
+/* Brasão ampliado em 70%, mantendo proporção e transparência. */
+.brand-mark {
+  width: 73px !important;
+  height: 73px !important;
+  min-width: 73px !important;
+  flex: 0 0 73px !important;
+}
+.brand-mark img {
+  width: 73px !important;
+  height: 73px !important;
+}
+@media (min-width: 851px) {
+  .desktop-nav-brand-mark {
+    width: 61px !important;
+    height: 61px !important;
+    flex: 0 0 61px !important;
+  }
+  .desktop-nav-brand-mark img {
+    width: 61px !important;
+    height: 61px !important;
+  }
+}
