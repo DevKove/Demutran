@@ -331,3 +331,56 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .sidebar-bottom .logout-button{position:sticky;bottom:0;z-index:3;display:flex!important;width:100%;min-height:48px;margin:10px 0 0!important;padding:13px;border:1px solid rgba(255,255,255,.2);border-radius:9px;background:#292326;color:#ffd0d0;box-shadow:0 -6px 16px rgba(0,0,0,.22)}
 .sidebar-bottom .logout-button:hover{background:#472b2b;color:#fff}
 @media(max-width:850px){.sidebar{height:100dvh;overflow-y:auto;overscroll-behavior:contain}.sidebar-bottom{position:sticky;bottom:0;background:#191a1c;padding-top:12px}.sidebar-bottom .logout-button{position:relative;bottom:auto}}
+
+
+/* Desktop: rolagem horizontal exclusiva do menu principal e sem overflow lateral global. */
+@media (min-width: 851px) {
+  html, body, #root, .app-shell {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .main-area,
+  .page-content {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .desktop-nav {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #d2b000 #343536;
+    padding-bottom: 8px;
+  }
+
+  .desktop-nav::-webkit-scrollbar {
+    display: block;
+    height: 7px;
+  }
+  .desktop-nav::-webkit-scrollbar-track {
+    background: #343536;
+    border-radius: 8px;
+  }
+  .desktop-nav::-webkit-scrollbar-thumb {
+    background: #d2b000;
+    border-radius: 8px;
+  }
+  .desktop-nav::-webkit-scrollbar-thumb:hover {
+    background: #f5c400;
+  }
+
+  .desktop-nav-item {
+    flex: 0 0 auto;
+  }
+  .desktop-nav-settings {
+    margin-left: 0;
+  }
+}
