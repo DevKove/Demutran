@@ -2200,3 +2200,23 @@ html[data-contrast="true"] .primary-button { color:#000 !important;background:#f
     height: 61px !important;
   }
 }
+
+
+/* Mobile: ocultar o indicador visual da rolagem, preservando o scroll. */
+@media (max-width: 850px) {
+  html,
+  body,
+  body * {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  body *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
+}
